@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth bg-black">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKY TOUR 2026 - LỊCH TRÌNH CONCERT SƠN TÙNG M-TP</title>
+  
+  <!-- Google Fonts: Be Vietnam Pro (Chuẩn tiếng Việt không lỗi dấu) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    body, h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Be Vietnam Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Be Vietnam Pro', sans-serif !important;
+      letter-spacing: -0.01em;
+    }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    .nav-glass {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .dark-overlay {
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(16px);
+    }
+    .dark-card {
+      background: #0d0e12;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body class="relative min-h-screen text-white selection:bg-white selection:text-black">
+
+  <!-- ============================================================== -->
+  <!-- 1. HEADER NAVIGATION (FIXED TOP)                               -->
+  <!-- ============================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 nav-glass transition-all duration-300">
+    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 h-20 flex justify-between items-center">
+      <!-- Nav Links -->
+      <nav class="flex items-center space-x-6 sm:space-x-10 text-xs sm:text-sm font-bold tracking-widest uppercase">
+        <a href="index.html" class="nav-item-link text-zinc-400 hover:text-white transition-colors py-1">HOME</a>
+        <a href="content.html" class="nav-item-link text-zinc-400 hover:text-white transition-colors py-1">CONTENT</a>
+        <a href="shop.html" class="nav-item-link text-zinc-400 hover:text-white transition-colors py-1">SHOP</a>
+        <a href="tour.html" class="nav-item-link text-white border-b-2 border-white pb-0.5 transition-colors py-1">TOUR</a>
+        <a href="about.html" class="hidden md:inline-block nav-item-link text-zinc-400 hover:text-white transition-colors py-1">ABOUT</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center space-x-4 sm:space-x-5 text-lg">
+        <!-- Admin CMS Link (HIDDEN by default, shown ONLY for Admin role) -->
+        <a id="header-admin-cms-btn" href="admin/index.html" class="hidden flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-zinc-900 border border-amber-500/40 hover:border-amber-400 text-amber-300 transition hover:scale-105 shadow-md" title="Mở Trang Quản Trị Admin CMS">
+          <i class="fa-solid fa-sliders text-amber-400 text-xs"></i>
+          <span>ADMIN CMS</span>
+        </a>
+
+        <!-- Notification Bell -->
+        <button id="header-bell-btn" class="hover:text-zinc-400 transition relative p-1.5 text-lg" aria-label="Notifications" title="Thông báo">
+          <i class="fa-regular fa-bell"></i>
+          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        </button>
+        
+        <!-- Header Auth Action Group (Login / Sign Up or Logged in User Pill) -->
+        <div id="header-auth-container" class="flex items-center gap-1.5 sm:gap-2">
+          <button id="btn-header-login" class="px-3 sm:px-3.5 py-1.5 text-xs font-bold text-zinc-300 hover:text-white hover:bg-zinc-800/80 rounded-full border border-zinc-700/70 transition cursor-pointer flex items-center gap-1.5">
+            <i class="fa-regular fa-user text-[11px]"></i>
+            <span>Đăng Nhập</span>
+          </button>
+          <button id="btn-header-register" class="px-3 sm:px-4 py-1.5 text-xs font-black text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-full shadow-md shadow-amber-400/20 transition hover:scale-105 cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-sparkles text-[10px]"></i>
+            <span>Đăng Ký Sky</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================== -->
+  <!-- 2. TOUR HERO BANNER                                            -->
+  <!-- ============================================================== -->
+  <section class="pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 px-6 sm:px-12 lg:px-16 bg-gradient-to-b from-zinc-950 via-black to-black border-b border-zinc-900">
+    <div class="max-w-[1720px] mx-auto">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="max-w-4xl">
+          <span id="tour-hero-tag" class="text-xs font-bold uppercase tracking-widest text-amber-400">WORLD TOUR & LIVE EXPERIENCES</span>
+          <h1 id="tour-hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black uppercase tracking-[-0.01em] pt-3 pb-1 leading-[1.25] bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(251,191,36,0.35)]">
+            SKY TOUR 2026: THE RESURRECTION
+          </h1>
+          <p id="tour-hero-desc" class="text-xs sm:text-sm text-zinc-400 mt-4 max-w-xl leading-relaxed">
+            Chuyến lưu diễn âm nhạc lớn nhất lịch sử của Sơn Tùng M-TP với sân khấu visual 360 độ cực đại, công nghệ âm thanh vòm tiêu chuẩn quốc tế và dàn nhạc sống đỉnh cao.
+          </p>
+        </div>
+
+        <div class="bg-zinc-950 px-6 py-4 rounded-2xl border border-zinc-800 flex items-center gap-6 shrink-0">
+          <div>
+            <div id="tour-next-tag" class="text-[10px] uppercase font-bold text-zinc-500">Đêm diễn tiếp theo</div>
+            <div id="tour-next-info" class="text-sm font-black text-amber-400">15.11.2026 &bull; HÀ NỘI</div>
+          </div>
+          <a id="tour-next-btn" href="#tour-items-grid" class="px-5 py-2.5 bg-white text-black hover:bg-zinc-200 text-xs font-bold rounded-full uppercase tracking-wider transition">
+            Xem Vé
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- 3. TOUR SCHEDULE GRID                                          -->
+  <!-- ============================================================== -->
+  <main class="py-16 px-6 sm:px-12 lg:px-16 bg-[#060608] min-h-[500px]">
+    <div class="max-w-[1720px] mx-auto">
+      <div class="mb-10">
+        <h2 class="text-2xl sm:text-3xl font-black uppercase text-white">LỊCH TRÌNH ĐÊM NHẠC CHÍNH THỨC</h2>
+        <p class="text-xs text-zinc-400 mt-1">Thông tin chi tiết các điểm dừng chân, địa điểm tổ chức và liên kết đặt vé chính hãng.</p>
+      </div>
+
+      <!-- Tour Grid -->
+      <div id="tour-items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Đang tải dữ liệu tour... -->
+        <div class="col-span-full text-center py-20 text-zinc-500">
+          <i class="fa-solid fa-spinner fa-spin text-3xl mb-3 text-zinc-600 block"></i>
+          Đang cập nhật lịch diễn từ ban tổ chức...
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- 4. CONCERT EXPERIENCE HIGHLIGHTS                               -->
+  <!-- ============================================================== -->
+  <section class="py-20 px-6 sm:px-12 lg:px-16 bg-black border-t border-zinc-900">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-zinc-500">CONCERT PRODUCTION</span>
+        <h3 class="text-2xl sm:text-4xl font-black uppercase text-white mt-1">TIÊU CHUẨN ĐÊM NHẠC ĐỈNH CAO</h3>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div class="p-6 rounded-3xl bg-zinc-950 border border-zinc-900">
+          <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto text-xl mb-4">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <h4 class="font-bold text-base text-white mb-2">Visual Sân Khấu 360°</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">Hệ thống màn hình LED cong vô cực và trụ ánh sáng tương tác đa chiều bao quát toàn sân vận động.</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-zinc-950 border border-zinc-900">
+          <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto text-xl mb-4">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <h4 class="font-bold text-base text-white mb-2">Đồng Bộ Ánh Sáng</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">Gậy cổ vũ Official SKY Lightstick Ver. 2 tự động đổi màu theo từng nhịp điệu của ca khúc biểu diễn.</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-zinc-950 border border-zinc-900">
+          <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto text-xl mb-4">
+            <i class="fa-solid fa-crown"></i>
+          </div>
+          <h4 class="font-bold text-base text-white mb-2">Đặc Quyền Vé VIP SKY</h4>
+          <p class="text-xs text-zinc-400 leading-relaxed">Lối đi riêng biệt, check-in ưu tiên, quà tặng limited edition và cơ hội tham dự buổi Soundcheck kín.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- 5. FOOTER                                                      -->
+  <!-- ============================================================== -->
+  <footer class="border-t border-zinc-900 bg-black py-12 px-6 sm:px-12 lg:px-16 text-xs text-zinc-500">
+    <div class="max-w-[1720px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center space-x-3">
+        <span class="global-company-name font-black text-white uppercase tracking-widest text-sm">M-TP ENTERTAINMENT</span>
+        <span>&bull;</span>
+        <span>SƠN TÙNG M-TP OFFICIAL TOUR</span>
+      </div>
+
+      <div class="flex items-center space-x-6 uppercase tracking-wider text-[11px] font-semibold text-zinc-400">
+        <a href="index.html" class="hover:text-white transition">Home</a>
+        <a href="content.html" class="hover:text-white transition">Content</a>
+        <a href="shop.html" class="hover:text-white transition">Shop</a>
+        <a href="tour.html" class="text-white transition">Tour</a>
+        <a href="about.html" class="hover:text-white transition">About</a>
+      </div>
+
+      <div class="global-copyright">
+        &copy; 2026 M-TP Entertainment. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Common Modals (Auth & Bell) -->
+  <div id="modal-bell" class="fixed inset-0 z-50 flex items-center justify-center dark-overlay hidden p-4">
+    <div class="dark-card rounded-3xl max-w-md w-full p-6 sm:p-8 relative">
+      <button id="close-modal-bell" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+      <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-zinc-800">
+        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-white"><i class="fa-regular fa-bell"></i></div>
+        <div>
+          <h3 class="text-base font-bold text-white uppercase tracking-wider">Thông báo SKY TOUR</h3>
+          <span class="text-xs text-zinc-400">Mở bán vé và sơ đồ sân khấu</span>
+        </div>
+      </div>
+      <p class="text-xs text-zinc-300 mb-4">Các đợt mở bán vé Early Bird sẽ được gửi thông báo qua email 24h trước giờ G.</p>
+    </div>
+  </div>
+
+  <div id="modal-auth" class="fixed inset-0 z-50 flex items-center justify-center dark-overlay hidden p-4">
+    <div class="dark-card rounded-3xl max-w-md w-full p-8 relative">
+      <button id="close-modal-auth" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+      <div class="flex border-b border-zinc-800 mb-6 text-sm font-bold">
+        <button id="tab-login" class="flex-1 pb-3 border-b-2 border-white text-white">ĐĂNG NHẬP</button>
+        <button id="tab-register" class="flex-1 pb-3 border-b-2 border-transparent text-zinc-500 hover:text-zinc-300">ĐĂNG KÝ SKY</button>
+      </div>
+      <form id="form-login" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Email / Username</label>
+          <input id="login-email" type="text" required placeholder="sky@mtp.vn" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Mật khẩu</label>
+          <input id="login-password" type="password" required placeholder="••••••••" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <button type="submit" id="btn-login-submit" class="w-full py-3 bg-white text-black hover:bg-zinc-200 rounded-xl text-xs font-bold uppercase tracking-wider mt-2 transition cursor-pointer">Đăng Nhập Ngay</button>
+      </form>
+      <form id="form-register" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Username / Sky Name</label>
+          <input id="reg-name" type="text" required placeholder="sky_member" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Email</label>
+          <input id="reg-email" type="email" required placeholder="name@example.com" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Mật khẩu</label>
+          <input id="reg-password" type="password" required minlength="6" placeholder="••••••••" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <button type="submit" id="btn-register-submit" class="w-full py-3 bg-amber-400 text-black hover:bg-amber-300 rounded-xl text-xs font-bold uppercase tracking-wider mt-2 transition cursor-pointer">Đăng Ký Tài Khoản Sky</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- API Engine & Page Script -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const openModal = (id) => document.getElementById(id)?.classList.remove('hidden');
+      const closeModal = (id) => document.getElementById(id)?.classList.add('hidden');
+
+      document.getElementById('header-bell-btn')?.addEventListener('click', () => openModal('modal-bell'));
+      document.getElementById('close-modal-bell')?.addEventListener('click', () => closeModal('modal-bell'));
+      document.getElementById('header-user-btn')?.addEventListener('click', () => openModal('modal-auth'));
+      document.getElementById('close-modal-auth')?.addEventListener('click', () => closeModal('modal-auth'));
+
+      // Load Tour Settings from API / CMS
+      async function loadTourSettings() {
+        if (!window.api || !window.api.getSettings) return;
+        try {
+          const res = await window.api.getSettings();
+          const s = (res && res.data) || null;
+          if (s && s.tour) {
+            const tp = s.tour;
+            if (tp.heroTag && document.getElementById('tour-hero-tag')) document.getElementById('tour-hero-tag').innerText = tp.heroTag;
+            if (tp.heroTitle && document.getElementById('tour-hero-title')) document.getElementById('tour-hero-title').innerText = tp.heroTitle;
+            if (tp.heroDesc && document.getElementById('tour-hero-desc')) document.getElementById('tour-hero-desc').innerText = tp.heroDesc;
+            if (tp.nextShowTag && document.getElementById('tour-next-tag')) document.getElementById('tour-next-tag').innerText = tp.nextShowTag;
+            if (tp.nextShowInfo && document.getElementById('tour-next-info')) document.getElementById('tour-next-info').innerText = tp.nextShowInfo;
+            if (tp.nextShowBtn && document.getElementById('tour-next-btn')) document.getElementById('tour-next-btn').innerText = tp.nextShowBtn;
+          }
+          if (s && s.global) {
+            const gl = s.global;
+            document.querySelectorAll('.global-company-name').forEach(el => el.innerText = gl.companyName || 'M-TP ENTERTAINMENT');
+            document.querySelectorAll('.global-copyright').forEach(el => el.innerText = gl.copyright || '© 2026 M-TP Entertainment. All rights reserved.');
+          }
+        } catch (e) {}
+      }
+
+      // Load Tour Schedules
+      async function loadTourSchedules() {
+        await loadTourSettings();
+        const grid = document.getElementById('tour-items-grid');
+        if (!grid || !window.api) return;
+        grid.innerHTML = '<div class="col-span-full text-center py-20 text-zinc-500"><i class="fa-solid fa-spinner fa-spin text-2xl mb-2 block"></i>Đang tải dữ liệu tour...</div>';
+        
+        const res = await window.api.getTours();
+        const tours = res.data || [];
+
+        if (tours.length === 0) {
+          grid.innerHTML = '<div class="col-span-full text-center py-16 text-zinc-500">Chưa có lịch diễn nào được công bố.</div>';
+          return;
+        }
+
+        grid.innerHTML = tours.map(t => {
+          const dateObj = new Date(t.event_date || t.date);
+          const formattedDate = dateObj.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+          const isSoldOut = t.status === 'Sold Out' || t.ticketStatus === 'sold_out';
+          return `
+            <div class="p-6 rounded-3xl bg-zinc-950 border border-zinc-900 flex flex-col justify-between hover:border-zinc-700 transition">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">${t.location || 'VIỆT NAM'}</span>
+                  <span class="text-[10px] font-bold px-2.5 py-1 rounded-full ${isSoldOut ? 'bg-rose-500/20 text-rose-300' : 'bg-zinc-800 text-white'}">${isSoldOut ? 'SOLD OUT' : 'UPCOMING'}</span>
+                </div>
+                <h3 class="text-lg font-black text-white mb-2 leading-snug">${t.title}</h3>
+                <p class="text-xs text-zinc-400 mb-4">${t.venue}</p>
+                <div class="space-y-1.5 text-xs text-zinc-400 mb-6 border-t border-zinc-900 pt-3">
+                  <div>📅 ${formattedDate}</div>
+                  <div class="text-white font-semibold">🎟️ ${t.priceRange || '800.000đ - 3.800.000đ'}</div>
+                </div>
+              </div>
+              <div>
+                ${isSoldOut ? '<button disabled class="w-full py-2 bg-zinc-900 text-zinc-600 text-xs font-bold rounded-full uppercase cursor-not-allowed">Đã Hết Vé</button>' : `<button onclick="window.handleBuyTicket('${(t.ticket_link || '#').replace(/'/g, "\\'")}', '${(t.title || '').replace(/'/g, "\\'")}')" class="w-full py-2.5 bg-white text-black hover:bg-zinc-200 text-xs font-bold rounded-full uppercase tracking-wider block text-center transition cursor-pointer">Mua Vé Ngay</button>`}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Handler mua vé Tour (Bảo vệ: Bắt buộc đăng nhập tài khoản Sky)
+      window.handleBuyTicket = (link, title) => {
+        if (window.api && !window.api.requireAuth('Vui lòng đăng nhập tài khoản Sky để mua vé tham gia SKY TOUR!')) {
+          return;
+        }
+        if (link && link !== '#' && !link.startsWith('javascript:')) {
+          window.open(link, '_blank');
+        } else {
+          alert(`Đã xác nhận đặt chỗ cho: ${title}.\nBan tổ chức sẽ liên hệ gửi vé điện tử qua Email tài khoản Sky của bạn.`);
+        }
+      };
+
+      loadTourSchedules();
+    });
+  </script>
+</body>
+</html>

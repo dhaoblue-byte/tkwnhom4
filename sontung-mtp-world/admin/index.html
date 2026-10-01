@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Điều Khiển Quản Trị - Sơn Tùng M-TP World Admin CMS</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  
+  <!-- Google Fonts: Be Vietnam Pro (Chuẩn tiếng Việt không lỗi dấu) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#fbbf24',
+              goldHover: '#f59e0b',
+              dark: '#000000',
+              surface: '#09090b',
+              card: '#121215',
+              border: '#27272a'
+            }
+          },
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+    }
+    body {
+      background-color: #000000;
+      color: #f4f4f5;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3f3f46;
+    }
+    .dark-card {
+      background: #0d0e12;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-black text-zinc-100 min-h-screen flex selection:bg-amber-400 selection:text-black">
+
+  <!-- ========================================================================
+       1. SIDEBAR CỐ ĐỊNH BÊN TRÁI (DARK MINIMALIST SIDEBAR)
+       ======================================================================== -->
+  <aside class="fixed top-0 left-0 h-screen w-64 bg-zinc-950/90 backdrop-blur-xl border-r border-zinc-800/80 flex flex-col justify-between z-40">
+    <div>
+      <!-- Logo Thương Hiệu M-TP -->
+      <div class="h-20 flex items-center px-6 border-b border-zinc-800/60">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-black font-black text-lg shadow-lg shadow-amber-500/10 group-hover:scale-105 transition-transform">
+            ⚡
+          </div>
+          <div>
+            <div class="font-black text-sm tracking-wider uppercase text-white group-hover:text-amber-400 transition-colors">SƠN TÙNG M-TP</div>
+            <div class="text-[10px] tracking-widest uppercase font-bold text-amber-400/90">ADMIN CMS &bull; V2</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Menu Điều Hướng Chính (Gộp liền mạch, phân nhóm logic) -->
+      <nav class="p-4 space-y-1.5 text-xs font-bold tracking-wider uppercase">
+        <!-- 1. DASHBOARD -->
+        <button id="nav-btn-dashboard" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 bg-amber-400 text-black font-extrabold shadow-lg shadow-amber-400/20">
+          <i class="fa-solid fa-chart-line text-sm w-4 text-center"></i>
+          <span>DASHBOARD</span>
+        </button>
+
+        <!-- NHÓM 1: NGHỆ THUẬT & TOUR DIỄN -->
+        <div class="pt-3 pb-1 px-3 text-[10px] tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>NGHỆ THUẬT & TOUR</span>
+          <div class="h-px bg-zinc-800/80 flex-1"></div>
+        </div>
+
+        <!-- 2. CONTENT (MV, AUDIO, BEHIND THE SCENES) -->
+        <button id="nav-btn-content" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-clapperboard text-sm w-4 text-center"></i>
+          <span>CONTENT & MV</span>
+        </button>
+
+        <!-- 3. TOUR (CONCERT & LIVE STAGES) -->
+        <button id="nav-btn-tour" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-ticket text-sm w-4 text-center"></i>
+          <span>TOUR & CONCERT</span>
+        </button>
+
+        <!-- NHÓM 2: CỬA HÀNG & ĐƠN HÀNG -->
+        <div class="pt-3 pb-1 px-3 text-[10px] tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>CỬA HÀNG & ĐƠN HÀNG</span>
+          <div class="h-px bg-zinc-800/80 flex-1"></div>
+        </div>
+
+        <!-- 4. SHOP (MERCHANDISE PRODUCTS) -->
+        <button id="nav-btn-shop" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-shirt text-sm w-4 text-center"></i>
+          <span>SHOP MERCH</span>
+        </button>
+
+        <!-- 5. ORDERS (MERCH ORDERS) -->
+        <button id="nav-btn-orders" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-cart-shopping text-sm w-4 text-center"></i>
+          <span>ORDERS (ĐƠN HÀNG)</span>
+        </button>
+
+        <!-- NHÓM 3: GIAO DIỆN & NỘI DUNG TỪNG TRANG -->
+        <div class="pt-3 pb-1 px-3 text-[10px] tracking-widest text-zinc-500 font-semibold flex items-center gap-2">
+          <span>GIAO DIỆN TỪNG TRANG</span>
+          <div class="h-px bg-zinc-800/80 flex-1"></div>
+        </div>
+
+        <!-- 6. QUẢN LÝ TRANG CHỦ (HOME CMS) -->
+        <button id="nav-btn-home" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-house text-sm w-4 text-center"></i>
+          <span>GIAO DIỆN TRANG CHỦ</span>
+        </button>
+
+        <!-- 7. QUẢN LÝ TRANG CONTENT (CONTENT CMS) -->
+        <button id="nav-btn-content-page" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-clapperboard text-sm w-4 text-center"></i>
+          <span>GIAO DIỆN CONTENT</span>
+        </button>
+
+        <!-- 8. QUẢN LÝ TRANG SHOP (SHOP CMS) -->
+        <button id="nav-btn-shop-page" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-store text-sm w-4 text-center"></i>
+          <span>GIAO DIỆN SHOP</span>
+        </button>
+
+        <!-- 9. QUẢN LÝ TRANG TOUR (TOUR CMS) -->
+        <button id="nav-btn-tour-page" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-ticket text-sm w-4 text-center"></i>
+          <span>GIAO DIỆN TOUR</span>
+        </button>
+
+        <!-- 10. QUẢN LÝ TRANG ABOUT (ABOUT CMS) -->
+        <button id="nav-btn-about" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-user-astronaut text-sm w-4 text-center"></i>
+          <span>GIAO DIỆN ABOUT</span>
+        </button>
+
+        <!-- 11. THÔNG TIN CHUNG & FOOTER (FOOTER CMS) -->
+        <button id="nav-btn-footer-page" class="w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800">
+          <i class="fa-solid fa-circle-info text-sm w-4 text-center"></i>
+          <span>FOOTER & THÔNG TIN CHUNG</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Khu vực Footer Sidebar & Đăng xuất -->
+    <div class="p-4 border-t border-zinc-800/60 bg-zinc-950/60 space-y-3">
+      <!-- Nút xem website người dùng -->
+      <a href="../index.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-800/80 transition group">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-arrow-up-right-from-square text-amber-400"></i>
+          <span>Xem Website</span>
+        </span>
+        <i class="fa-solid fa-chevron-right text-[10px] text-zinc-600 group-hover:translate-x-0.5 transition-transform"></i>
+      </a>
+
+      <!-- LOGOUT -->
+      <button id="btn-admin-logout" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-rose-400 hover:text-white hover:bg-rose-600/90 border border-rose-500/20 hover:border-rose-600 transition duration-200">
+        <i class="fa-solid fa-arrow-right-from-bracket text-sm w-4 text-center"></i>
+        <span>ĐĂNG XUẤT</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       2. KHỐI NỘI DUNG CHÍNH (MAIN CONTENT CONTAINER)
+       ======================================================================== -->
+  <div class="pl-64 flex-1 flex flex-col min-h-screen">
+    
+    <!-- Top Header Bar -->
+    <header class="h-20 border-b border-zinc-800/80 bg-zinc-950/60 backdrop-blur-md px-8 flex items-center justify-between sticky top-0 z-30">
+      <div class="flex items-center gap-3">
+        <span id="page-badge" class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-400/10 text-amber-400 border border-amber-400/30">ADMIN BACKEND</span>
+        <h1 id="page-heading" class="text-lg font-black text-white uppercase tracking-wider">Dashboard Thống Kê</h1>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3 bg-zinc-900 border border-zinc-800 rounded-full px-4 py-1.5">
+          <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+          <span class="text-xs font-bold text-white">@admin (Quản trị viên)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Content Body -->
+    <main class="p-8 flex-1">
+      
+      <!-- NOTIFICATION FEEDBACK TOAST -->
+      <div id="admin-toast" class="hidden mb-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center justify-between">
+        <span id="admin-toast-text">Thao tác thành công!</span>
+        <button onclick="document.getElementById('admin-toast').classList.add('hidden')" class="text-emerald-400 hover:text-white">&times;</button>
+      </div>
+
+      <!-- TAB 1: DASHBOARD OVERVIEW -->
+      <section id="section-dashboard" class="space-y-8">
+        <!-- HEADER WELCOME -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
+              <span>TỔNG QUAN HỆ THỐNG</span>
+              <span class="text-xs px-2.5 py-1 bg-amber-400/10 text-amber-400 border border-amber-400/20 rounded-full font-bold uppercase">Live Data</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Xin chào <strong class="text-white">@admin</strong>! Dưới đây là dữ liệu quản trị thực tế của website Sơn Tùng M-TP World.</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="btn-quick-add-content" class="px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold rounded-full border border-zinc-700/80 transition flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-plus text-amber-400"></i>
+              <span>Đăng MV Mới</span>
+            </button>
+            <button id="btn-quick-add-tour" class="px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold rounded-full border border-zinc-700/80 transition flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-ticket text-amber-400"></i>
+              <span>Thêm Tour Mới</span>
+            </button>
+            <button id="btn-quick-add-product" class="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black rounded-full shadow-lg shadow-amber-400/20 transition flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-cart-plus"></i>
+              <span>Thêm Sản Phẩm Merch</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 KPI CARDS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 rounded-3xl bg-zinc-950/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Nội Dung Media</span>
+              <div class="w-10 h-10 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center text-base"><i class="fa-solid fa-clapperboard"></i></div>
+            </div>
+            <div id="stat-content-count" class="text-3xl font-black text-white mb-1">5</div>
+            <div class="text-[11px] text-zinc-500">MV, Audio & Behind The Scenes</div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-zinc-950/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Merchandise</span>
+              <div class="w-10 h-10 rounded-2xl bg-sky-400/10 text-sky-400 flex items-center justify-center text-base"><i class="fa-solid fa-shirt"></i></div>
+            </div>
+            <div id="stat-product-count" class="text-3xl font-black text-white mb-1">4</div>
+            <div class="text-[11px] text-zinc-500">Sản phẩm Merch sẵn có</div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-zinc-950/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Đơn Đặt Hàng</span>
+              <div class="w-10 h-10 rounded-2xl bg-purple-400/10 text-purple-400 flex items-center justify-center text-base"><i class="fa-solid fa-boxes-packing"></i></div>
+            </div>
+            <div id="stat-order-count" class="text-3xl font-black text-white mb-1">3</div>
+            <div class="text-[11px] text-zinc-500">Đơn mua từ Fan Sky</div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-zinc-950/80 border border-zinc-800/80 hover:border-zinc-700 transition">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-zinc-400">Doanh Thu Merch</span>
+              <div class="w-10 h-10 rounded-2xl bg-emerald-400/10 text-emerald-400 flex items-center justify-center text-base"><i class="fa-solid fa-dong-sign"></i></div>
+            </div>
+            <div id="stat-revenue-total" class="text-2xl font-black text-emerald-400 mb-1">3.080.000đ</div>
+            <div class="text-[11px] text-zinc-500">Doanh số thực tế</div>
+          </div>
+        </div>
+
+        <!-- DASHBOARD TABLES -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Recent Orders Card -->
+          <div class="bg-zinc-950/80 border border-zinc-800/80 rounded-3xl p-6">
+            <h3 class="font-bold text-white text-base mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-cart-shopping text-amber-400 text-sm"></i> Đơn Hàng Mới Nhất
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-zinc-800 text-zinc-500 uppercase">
+                    <th class="py-2.5">Khách Hàng</th>
+                    <th class="py-2.5">Tổng Tiền</th>
+                    <th class="py-2.5">Trạng Thái</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-recent-orders" class="divide-y divide-zinc-900 text-zinc-300">
+                  <!-- JS dynamically fills -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Recent Content Card -->
+          <div class="bg-zinc-950/80 border border-zinc-800/80 rounded-3xl p-6">
+            <h3 class="font-bold text-white text-base mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-clapperboard text-amber-400 text-sm"></i> Tác Phẩm Media Mới
+            </h3>
+            <div class="space-y-3" id="dash-recent-content">
+              <!-- JS dynamically fills -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: CONTENT MANAGEMENT -->
+      <section id="section-content" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider">Quản Lý Tác Phẩm Media & MV</h2>
+            <p class="text-xs text-zinc-400 mt-1">Đăng tải, chỉnh sửa hoặc xóa các bài hát, MV 4K, Audio & Hậu trường.</p>
+          </div>
+          <button id="btn-add-content-modal" class="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black rounded-full shadow transition flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-plus"></i> Thêm Media Mới
+          </button>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 bg-zinc-900/50 text-zinc-400 uppercase font-bold">
+                <th class="p-4">Hình Ảnh</th>
+                <th class="p-4">Tên Tác Phẩm</th>
+                <th class="p-4">Thể Loại</th>
+                <th class="p-4">Lượt Xem / Stream</th>
+                <th class="p-4 text-right">Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="table-content-list" class="divide-y divide-zinc-900 text-zinc-200">
+              <!-- JS dynamically fills -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: SHOP PRODUCTS MANAGEMENT -->
+      <section id="section-shop" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider">Quản Lý Cửa Hàng Merchandise</h2>
+            <p class="text-xs text-zinc-400 mt-1">Quản lý kho hàng Official Lightstick, Áo Hoodie, T-Shirt, Album Boxset.</p>
+          </div>
+          <button id="btn-add-product-modal" class="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black rounded-full shadow transition flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-cart-plus"></i> Thêm Sản Phẩm Mới
+          </button>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 bg-zinc-900/50 text-zinc-400 uppercase font-bold">
+                <th class="p-4">Sản Phẩm</th>
+                <th class="p-4">Danh Mục</th>
+                <th class="p-4">Giá Bán</th>
+                <th class="p-4">Tồn Kho</th>
+                <th class="p-4">Tag / Phân Loại</th>
+                <th class="p-4 text-right">Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="table-product-list" class="divide-y divide-zinc-900 text-zinc-200">
+              <!-- JS dynamically fills -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 4: ORDERS MANAGEMENT -->
+      <section id="section-orders" class="hidden space-y-6">
+        <div>
+          <h2 class="text-xl font-black text-white uppercase tracking-wider">Quản Lý Đơn Hàng Merchandise</h2>
+          <p class="text-xs text-zinc-400 mt-1">Theo dõi danh sách đơn mua từ Fan Sky và cập nhật trạng thái đơn hàng.</p>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 bg-zinc-900/50 text-zinc-400 uppercase font-bold">
+                <th class="p-4">Mã / Khách Hàng</th>
+                <th class="p-4">SĐT & Địa Chỉ</th>
+                <th class="p-4">Tổng Tiền</th>
+                <th class="p-4">Thanh Toán</th>
+                <th class="p-4">Trạng Thái</th>
+                <th class="p-4 text-right">Cập Nhật</th>
+              </tr>
+            </thead>
+            <tbody id="table-orders-list" class="divide-y divide-zinc-900 text-zinc-200">
+              <!-- JS dynamically fills -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 5: TOUR & CONCERT MANAGEMENT -->
+      <section id="section-tour" class="hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider">Quản Lý Tour & Concert</h2>
+            <p class="text-xs text-zinc-400 mt-1">Quản lý lịch trình biểu diễn, địa điểm sân vận động và trạng thái bán vé SKY TOUR.</p>
+          </div>
+          <button id="btn-add-tour-modal" class="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black rounded-full shadow transition flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-plus"></i> Thêm Đêm Diễn Mới
+          </button>
+        </div>
+
+        <div class="bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-zinc-800 bg-zinc-900/50 text-zinc-400 uppercase font-bold">
+                <th class="p-4">Poster</th>
+                <th class="p-4">Tên Tour / Đêm Diễn</th>
+                <th class="p-4">Địa Điểm & Sân Khấu</th>
+                <th class="p-4">Thời Gian</th>
+                <th class="p-4">Giá Vé / Trạng Thái</th>
+                <th class="p-4 text-right">Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="table-tour-list" class="divide-y divide-zinc-900 text-zinc-200">
+              <!-- JS dynamically fills -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 6: HOME CMS (QUẢN LÝ TRANG CHỦ) -->
+      <section id="section-home" class="hidden space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-house text-amber-400"></i>
+              <span>Quản Lý Cấu Hình Trang Chủ</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Tùy chỉnh thông điệp thương hiệu, video hero, mạng xã hội và 4 kỷ lục hiển thị trên trang chủ.</p>
+          </div>
+          <button form="form-home-save" type="submit" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Lưu Cấu Hình Trang Chủ</span>
+          </button>
+        </div>
+
+        <!-- FORM CẤU HÌNH TRANG CHỦ -->
+        <form id="form-home-save" class="space-y-8">
+          <!-- CARD 1: CẤU HÌNH HERO BANNER & THƯƠNG HIỆU -->
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center justify-between border-b border-zinc-800/80 pb-3">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-tv text-amber-400"></i>
+                <h3 class="text-sm font-black uppercase text-white tracking-wider">Hero Banner & Video Nền</h3>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold text-emerald-400 uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Video Backend Đang Phát</span>
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tên Nghệ Sĩ / Headline</label>
+                <input id="setting-home-title" type="text" value="SƠN TÙNG M-TP" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Huy hiệu thương hiệu</label>
+                <input id="setting-home-badge" type="text" value="M-TP ENTERTAINMENT OFFICIAL" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-zinc-400 mb-1 font-semibold">Slogan / Thông điệp giới thiệu trang chủ</label>
+                <textarea id="setting-home-desc" rows="2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">Khám phá không gian âm nhạc chính thức, lịch concert SKY TOUR 2026, cửa hàng Merchandise độc quyền và hành trình nghệ thuật của nghệ sĩ Sơn Tùng M-TP.</textarea>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-zinc-400 mb-1 font-semibold">Tệp Video Nền Hero (Trong mục Backend & Assets)</label>
+                <input type="text" disabled value="backend/SON TUNG M-TP'S WORLD.mp4 &rarr; assets/videos/hero-banner.mp4" class="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl p-2.5 text-zinc-400 font-mono text-[11px]" />
+                <p class="text-[10px] text-zinc-500 mt-1">Video tự động phát muted loop và có cụm điều khiển BẬT/TẮT TIẾNG trên giao diện.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: 7 KÊNH MẠNG XÃ HỘI CHÍNH THỨC -->
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-share-nodes text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">7 Kênh Mạng Xã Hội Chính Thức</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-youtube text-red-500"></i> 1. YouTube Channel</label>
+                <input id="setting-social-youtube" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-spotify text-emerald-400"></i> 2. Spotify Artist</label>
+                <input id="setting-social-spotify" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-apple text-rose-400"></i> 3. Apple Music</label>
+                <input id="setting-social-apple" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-tiktok text-white"></i> 4. TikTok Official</label>
+                <input id="setting-social-tiktok" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-facebook-f text-sky-400"></i> 5. Facebook Fanpage</label>
+                <input id="setting-social-facebook" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-instagram text-rose-400"></i> 6. Instagram Profile</label>
+                <input id="setting-social-instagram" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center gap-1.5"><i class="fa-brands fa-x-twitter text-zinc-300"></i> 7. X (Twitter) Official</label>
+                <input id="setting-social-twitter" type="url" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: 4 KỶ LỤC & CỘT MỐC LỊCH SỬ (TRANG CHỦ) -->
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center justify-between border-b border-zinc-800/80 pb-3">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-trophy text-amber-400"></i>
+                <h3 class="text-sm font-black uppercase text-white tracking-wider">4 Kỷ Lục & Cột Mốc Âm Nhạc (Trang Chủ)</h3>
+              </div>
+              <span class="text-[10px] text-amber-400/90 font-bold uppercase tracking-wider">Hiển thị ở trang Home</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <!-- Thẻ 1 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/70 border border-zinc-800 space-y-2">
+                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
+                  <span>Kỷ Lục 1</span>
+                  <span class="text-zinc-500 font-mono text-[10px]">#01</span>
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Số / Dấu mốc lớn (VD: 10.5M+)</label>
+                  <input id="setting-rec-1-val" type="text" placeholder="10.5M+" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề (Vàng in hoa)</label>
+                  <input id="setting-rec-1-title" type="text" placeholder="YOUTUBE SUBSCRIBERS" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Chú thích dưới</label>
+                  <input id="setting-rec-1-desc" type="text" placeholder="Nút Kim Cương đang hướng tới" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+
+              <!-- Thẻ 2 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/70 border border-zinc-800 space-y-2">
+                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
+                  <span>Kỷ Lục 2</span>
+                  <span class="text-zinc-500 font-mono text-[10px]">#02</span>
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Số / Dấu mốc lớn (VD: 3.5 TỶ+)</label>
+                  <input id="setting-rec-2-val" type="text" placeholder="3.5 TỶ+" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề (Vàng in hoa)</label>
+                  <input id="setting-rec-2-title" type="text" placeholder="TỔNG LƯỢT XEM" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Chú thích dưới</label>
+                  <input id="setting-rec-2-desc" type="text" placeholder="Kỷ lục người xem YouTube" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+
+              <!-- Thẻ 3 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/70 border border-zinc-800 space-y-2">
+                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
+                  <span>Kỷ Lục 3</span>
+                  <span class="text-zinc-500 font-mono text-[10px]">#03</span>
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Số / Dấu mốc lớn (VD: 25+)</label>
+                  <input id="setting-rec-3-val" type="text" placeholder="25+" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề (Vàng in hoa)</label>
+                  <input id="setting-rec-3-title" type="text" placeholder="MV NO.1 TRENDING" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Chú thích dưới</label>
+                  <input id="setting-rec-3-desc" type="text" placeholder="Kỷ lục liên tiếp toàn diện" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+
+              <!-- Thẻ 4 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/70 border border-zinc-800 space-y-2">
+                <div class="text-[11px] font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
+                  <span>Kỷ Lục 4</span>
+                  <span class="text-zinc-500 font-mono text-[10px]">#04</span>
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Số / Dấu mốc lớn (VD: SKY)</label>
+                  <input id="setting-rec-4-val" type="text" placeholder="SKY" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề (Vàng in hoa)</label>
+                  <input id="setting-rec-4-title" type="text" placeholder="FANDOM HÙNG MẠNH" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Chú thích dưới</label>
+                  <input id="setting-rec-4-desc" type="text" placeholder="Cộng đồng fan lớn nhất VN" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Lưu Cấu Hình Trang Chủ</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- TAB 7: ABOUT CMS (QUẢN LÝ TRANG ABOUT) -->
+      <section id="section-about" class="hidden space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-user-astronaut text-amber-400"></i>
+              <span>Quản Lý Cấu Hình Trang About</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Chỉnh sửa hồ sơ nghệ sĩ, tuyên ngôn nghệ thuật, tiểu sử và thông tin M-TP Entertainment.</p>
+          </div>
+          <button form="form-about-save" type="submit" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Lưu Cấu Hình Trang About</span>
+          </button>
+        </div>
+
+        <!-- FORM CẤU HÌNH TRANG ABOUT -->
+        <form id="form-about-save" class="space-y-8">
+          <!-- CARD 1: HERO BANNER & TUYÊN NGÔN NGHỆ THUẬT -->
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-sparkles text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Hero Banner & Tuyên Ngôn Nghệ Thuật</h3>
+            </div>
+
+            <div class="space-y-4 text-xs">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Hero Tagline</label>
+                  <input id="setting-about-tag" type="text" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Hero Tiêu Đề</label>
+                  <input id="setting-about-title" type="text" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Hero Mô tả ngắn</label>
+                <textarea id="setting-about-desc" rows="2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400"></textarea>
+              </div>
+
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold flex items-center justify-between">
+                  <span>Câu trích dẫn tuyên ngôn (Iconic Manifesto Quote)</span>
+                  <span class="text-[10px] text-amber-400 font-bold uppercase">Hiển thị nổi bật đầu trang</span>
+                </label>
+                <input id="setting-about-quote" type="text" placeholder="Muốn ngồi ở một vị trí không ai ngồi được thì phải chịu những cảm giác không ai chịu được." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-medium focus:outline-none focus:border-amber-400" />
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: HỒ SƠ NGHỆ SĨ & HÌNH ẢNH BANNER -->
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-id-card text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Hồ Sơ Nghệ Sĩ & Hình Ảnh Chân Dung</h3>
+            </div>
+
+            <div class="space-y-4 text-xs">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tên Thật Nghệ Sĩ</label>
+                  <input id="setting-about-name" type="text" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Chức danh / Danh xưng</label>
+                  <input id="setting-about-role" type="text" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Đường dẫn Ảnh Banner / Chân Dung Nghệ Sĩ (About Banner)</label>
+                <div class="flex gap-2">
+                  <input id="setting-about-avatar" type="text" placeholder="assets/images/about-banner.webp" class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+                  <button type="button" onclick="document.getElementById('setting-about-avatar').value='assets/images/about-banner.webp'" class="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-xs rounded-xl font-semibold">Dùng ảnh Sơn Tùng mới</button>
+                </div>
+                <p class="text-[10px] text-zinc-500 mt-1">Ảnh Sơn Tùng M-TP chất lượng cao: assets/images/about-banner.webp</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: TIỂU SỬ & CÂU CHUYỆN NGHỆ THUẬT -->
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-book-open text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Tiểu Sử & Câu Chuyện Nghệ Thuật</h3>
+            </div>
+
+            <div class="space-y-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Tiểu sử</label>
+                <input id="setting-about-biotitle" type="text" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Đoạn văn 1 (Khởi đầu & Đam mê âm nhạc)</label>
+                <textarea id="setting-about-biop1" rows="3" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400"></textarea>
+              </div>
+
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Đoạn văn 2 (Đỉnh cao âm nhạc & Tầm ảnh hưởng)</label>
+                <textarea id="setting-about-biop2" rows="3" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400"></textarea>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tên Công Ty Giải Trí</label>
+                  <input id="setting-about-companytitle" type="text" value="M-TP ENTERTAINMENT" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Thông điệp / Tầm nhìn M-TP Entertainment</label>
+                  <textarea id="setting-about-companydesc" rows="2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">Công ty giải trí đa phương tiện tiên phong kiến tạo các giá trị nghệ thuật nguyên bản, phát triển tài năng và đưa chuẩn mực sản xuất quốc tế đến với nền âm nhạc Việt Nam.</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Lưu Cấu Hình Trang About</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- TAB 8: CONTENT PAGE CMS -->
+      <section id="section-content-page" class="hidden space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-clapperboard text-amber-400"></i>
+              <span>Quản Lý Giao Diện Trang Content</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Tùy chỉnh tiêu đề hero, phụ đề và tên 3 cụm media carousel (Music Videos, Bản Audio, Hậu trường).</p>
+          </div>
+          <button form="form-content-page-save" type="submit" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Lưu Cấu Hình Content</span>
+          </button>
+        </div>
+
+        <form id="form-content-page-save" class="space-y-8">
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-heading text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Tiêu Đề & Giới Thiệu Đầu Trang (Hero Banner)</h3>
+            </div>
+            <div class="space-y-4 text-xs">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Huy hiệu nhỏ trên cùng (Tagline)</label>
+                  <input id="setting-content-tag" type="text" value="DISCOGRAPHY & MEDIA VAULT" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-semibold" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu Đề Lớn Chính (Headline)</label>
+                  <input id="setting-content-title" type="text" value="NỘI DUNG & MV CHÍNH THỨC" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Mô tả tóm tắt nội dung</label>
+                <textarea id="setting-content-desc" rows="2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">Thưởng thức toàn bộ các siêu phẩm Music Video 4K, bản thu âm Lossless và những thước phim tài liệu hậu trường độc quyền từ Sơn Tùng M-TP.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-list-check text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Tiêu Đề 3 Cụm Media Carousel</h3>
+            </div>
+            <div class="space-y-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 1 (Music Videos)</label>
+                <input id="setting-content-row1" type="text" value="MUSIC VIDEOS CHÍNH THỨC" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 2 (Bản Audio)</label>
+                <input id="setting-content-row2" type="text" value="BẢN THU ÂM AUDIO CHẤT LƯỢNG CAO" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 3 (Hậu trường & Tài liệu)</label>
+                <input id="setting-content-row3" type="text" value="HẬU TRƯỜNG & PHIM TÀI LIỆU (BEHIND THE SCENES)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Lưu Cấu Hình Content</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- TAB 9: SHOP PAGE CMS -->
+      <section id="section-shop-page" class="hidden space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-store text-amber-400"></i>
+              <span>Quản Lý Giao Diện Trang Shop</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Tùy chỉnh tiêu đề hero, phụ đề và tên 4 cụm carousel sản phẩm (Best Seller, Lightstick, Trang phục, Album CD).</p>
+          </div>
+          <button form="form-shop-page-save" type="submit" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Lưu Cấu Hình Shop</span>
+          </button>
+        </div>
+
+        <form id="form-shop-page-save" class="space-y-8">
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-heading text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Tiêu Đề & Giới Thiệu Cửa Hàng (Hero Banner)</h3>
+            </div>
+            <div class="space-y-4 text-xs">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Huy hiệu nhỏ trên cùng (Tagline)</label>
+                  <input id="setting-shop-tag" type="text" value="EXCLUSIVE MERCHANDISE & STORE" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-semibold" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu Đề Lớn Cửa Hàng (Headline)</label>
+                  <input id="setting-shop-title" type="text" value="CỬA HÀNG M-TP STORE" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Mô tả tóm tắt cửa hàng</label>
+                <textarea id="setting-shop-desc" rows="2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">Các sản phẩm gậy cổ vũ Lightstick chính hãng, bộ sưu tập thời trang Hoodie, T-Shirt phiên bản giới hạn và đĩa vật lý có chữ ký độc quyền.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-tags text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Tiêu Đề 4 Cụm Carousel Sản Phẩm</h3>
+            </div>
+            <div class="space-y-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 1 (Best Seller - Bán Chạy Nhất)</label>
+                <input id="setting-shop-row1" type="text" value="🔥 SẢN PHẨM BÁN CHẠY (BEST SELLER)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 2 (Official Lightstick & Cổ Vũ)</label>
+                <input id="setting-shop-row2" type="text" value="OFFICIAL SKY LIGHTSTICK & CỔ VŨ" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 3 (Thời Trang & Hoodie Apparel)</label>
+                <input id="setting-shop-row3" type="text" value="THỜI TRANG & HOODIE (APPAREL)" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tiêu đề Cụm 4 (Album CD & Phụ Kiện Độc Quyền)</label>
+                <input id="setting-shop-row4" type="text" value="ALBUM CD & PHỤ KIỆN ĐỘC QUYỀN" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Lưu Cấu Hình Shop</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- TAB 10: TOUR PAGE CMS -->
+      <section id="section-tour-page" class="hidden space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-ticket text-amber-400"></i>
+              <span>Quản Lý Giao Diện Trang Tour</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Tùy chỉnh tiêu đề hero tour, phụ đề, hộp đêm diễn kế tiếp và tiêu đề danh sách tour.</p>
+          </div>
+          <button form="form-tour-page-save" type="submit" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Lưu Cấu Hình Tour</span>
+          </button>
+        </div>
+
+        <form id="form-tour-page-save" class="space-y-8">
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-heading text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Tiêu Đề & Giới Thiệu Tour (Hero Banner)</h3>
+            </div>
+            <div class="space-y-4 text-xs">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Huy hiệu nhỏ trên cùng (Tagline)</label>
+                  <input id="setting-tour-tag" type="text" value="WORLD TOUR & LIVE EXPERIENCES" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-semibold" />
+                </div>
+                <div>
+                  <label class="block text-zinc-400 mb-1 font-semibold">Tiêu Đề Lớn Tour (Headline)</label>
+                  <input id="setting-tour-title" type="text" value="SKY TOUR 2026: THE RESURRECTION" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Mô tả tóm tắt tour diễn</label>
+                <textarea id="setting-tour-desc" rows="2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">Chuyến lưu diễn âm nhạc lớn nhất lịch sử của Sơn Tùng M-TP với sân khấu visual 360 độ cực đại, công nghệ âm thanh vòm tiêu chuẩn quốc tế và dàn nhạc sống đỉnh cao.</textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-bullhorn text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Hộp Thông Báo Đêm Diễn Kế Tiếp (Next Show Box)</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Huy hiệu (VD: Đêm diễn tiếp theo)</label>
+                <input id="setting-tour-nexttag" type="text" value="Đêm diễn tiếp theo" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Thời gian & Địa điểm (Chữ vàng)</label>
+                <input id="setting-tour-nextinfo" type="text" value="15.11.2026 • HÀ NỘI" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tên Nút Xem Vé</label>
+                <input id="setting-tour-nextbtn" type="text" value="Xem Vé" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Lưu Cấu Hình Tour</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- TAB 11: FOOTER & GLOBAL CMS -->
+      <section id="section-footer-page" class="hidden space-y-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-amber-400"></i>
+              <span>Quản Lý Footer & Thông Tin Chung</span>
+            </h2>
+            <p class="text-xs text-zinc-400 mt-1">Tùy chỉnh thông tin công ty, địa chỉ, hotline, email liên hệ và bản quyền hiển thị ở chân trang toàn bộ website.</p>
+          </div>
+          <button form="form-footer-page-save" type="submit" class="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2 self-start sm:self-auto">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Lưu Thông Tin Footer</span>
+          </button>
+        </div>
+
+        <form id="form-footer-page-save" class="space-y-8">
+          <div class="p-6 bg-zinc-950 border border-zinc-800 rounded-3xl space-y-4">
+            <div class="flex items-center gap-2 border-b border-zinc-800/80 pb-3">
+              <i class="fa-solid fa-building text-amber-400"></i>
+              <h3 class="text-sm font-black uppercase text-white tracking-wider">Thông Tin Doanh Nghiệp & Bản Quyền</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Tên Doanh Nghiệp / Chủ Quản</label>
+                <input id="setting-footer-company" type="text" value="CÔNG TY TNHH M-TP ENTERTAINMENT" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white font-bold focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Dòng Bản Quyền (Copyright)</label>
+                <input id="setting-footer-copyright" type="text" value="© 2026 M-TP ENTERTAINMENT. ALL RIGHTS RESERVED." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Hotline Hỗ Trợ / Booking</label>
+                <input id="setting-footer-hotline" type="text" value="1900 6868" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div>
+                <label class="block text-zinc-400 mb-1 font-semibold">Email Liên Hệ</label>
+                <input id="setting-footer-email" type="email" value="booking@mtp.vn" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 font-bold" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-zinc-400 mb-1 font-semibold">Địa Chỉ Trụ Sở Công Ty</label>
+                <input id="setting-footer-address" type="text" value="Tòa nhà M-TP, Quận 1, TP. Hồ Chí Minh, Việt Nam" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <button type="submit" class="px-8 py-3.5 bg-amber-400 hover:bg-amber-300 text-black text-xs font-black uppercase tracking-wider rounded-xl shadow-lg shadow-amber-400/20 transition cursor-pointer flex items-center gap-2">
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span>Lưu Thông Tin Footer</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MODAL: ADD / EDIT CONTENT -->
+  <div id="modal-content-form" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+    <div class="dark-card rounded-3xl max-w-lg w-full p-6 relative">
+      <button onclick="document.getElementById('modal-content-form').classList.add('hidden')" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl">&times;</button>
+      <h3 id="modal-content-title" class="text-base font-black text-white uppercase tracking-wider mb-4">Thêm Media Mới</h3>
+      <form id="form-content-save" class="space-y-3 text-xs">
+        <input type="hidden" id="content-edit-id" />
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Tên tác phẩm / Video Title</label>
+          <input id="content-edit-title" type="text" required placeholder="ĐỪNG LÀM TRÁI TIM ANH ĐAU" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Thể loại</label>
+            <select id="content-edit-type" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">
+              <option value="MV">MV (Music Video)</option>
+              <option value="Audio">Audio Stream</option>
+              <option value="BehindTheScenes">Behind The Scenes</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Lượt xem hiển thị</label>
+            <input id="content-edit-views" type="text" placeholder="120M+ views" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Link Ảnh bìa / Thumbnail URL</label>
+          <input id="content-edit-cover" type="url" placeholder="https://images.unsplash.com/..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Link Youtube / Media URL</label>
+          <input id="content-edit-url" type="url" placeholder="https://www.youtube.com/watch?v=..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          <p class="text-[10px] text-amber-400/90 mt-1"><i class="fa-solid fa-circle-check text-[9px]"></i> Tự động chiếu MV / Hậu trường / Audio trực tiếp ngay trên web (không mở sang trang YouTube).</p>
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Mô tả ngắn</label>
+          <textarea id="content-edit-desc" rows="2" placeholder="Bản tình ca làm say lòng người hâm mộ..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-amber-400 hover:bg-amber-300 text-black font-black uppercase rounded-xl transition mt-2">Lưu Tác Phẩm</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <div id="modal-product-form" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+    <div class="dark-card rounded-3xl max-w-lg w-full p-6 relative">
+      <button onclick="document.getElementById('modal-product-form').classList.add('hidden')" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl">&times;</button>
+      <h3 id="modal-product-title" class="text-base font-black text-white uppercase tracking-wider mb-4">Thêm Sản Phẩm Merchandise</h3>
+      <form id="form-product-save" class="space-y-3 text-xs">
+        <input type="hidden" id="prod-edit-id" />
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Tên sản phẩm</label>
+          <input id="prod-edit-name" type="text" required placeholder="Official SKY Lightstick Ver. 2" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Giá bán (VNĐ)</label>
+            <input id="prod-edit-price" type="number" required placeholder="650000" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Số lượng tồn kho</label>
+            <input id="prod-edit-stock" type="number" required placeholder="250" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Danh mục</label>
+            <select id="prod-edit-category" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">
+              <option value="lightstick">Lightstick</option>
+              <option value="apparel">Áo / Hoodie</option>
+              <option value="album">Album CD</option>
+              <option value="accessory">Phụ kiện</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Link hình ảnh sản phẩm</label>
+          <input id="prod-edit-image" type="url" placeholder="https://images.unsplash.com/..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Mô tả sản phẩm</label>
+          <textarea id="prod-edit-desc" rows="2" placeholder="Gậy cổ vũ chính thức thế hệ mới..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400"></textarea>
+        </div>
+        <div>
+          <label class="flex items-center gap-3 cursor-pointer p-3 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 transition">
+            <input type="checkbox" id="prod-edit-bestseller" class="w-4 h-4 accent-amber-400 rounded cursor-pointer" />
+            <div class="flex flex-col">
+              <span class="text-xs font-black text-amber-300 flex items-center gap-1.5">
+                <i class="fa-solid fa-fire text-amber-400"></i> Đánh dấu là Sản phẩm Bán Chạy (BEST SELLER)
+              </span>
+              <span class="text-[10px] text-zinc-400">Hiển thị huy hiệu 🔥 BEST SELLER và ưu tiên lên đầu trang Shop</span>
+            </div>
+          </label>
+        </div>
+        <button type="submit" class="w-full py-3 bg-amber-400 hover:bg-amber-300 text-black font-black uppercase rounded-xl transition mt-2">Lưu Sản Phẩm</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD / EDIT TOUR -->
+  <div id="modal-tour-form" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+    <div class="dark-card rounded-3xl max-w-lg w-full p-6 relative">
+      <button onclick="document.getElementById('modal-tour-form').classList.add('hidden')" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-xl">&times;</button>
+      <h3 id="modal-tour-title" class="text-base font-black text-white uppercase tracking-wider mb-4">Thêm Đêm Diễn Mới</h3>
+      <form id="form-tour-save" class="space-y-3 text-xs">
+        <input type="hidden" id="tour-edit-id" />
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Tên Tour / Đêm Diễn</label>
+          <input id="tour-edit-title" type="text" required placeholder="SKY TOUR 2026 - THE RESURRECTION" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Thành Phố / Tỉnh</label>
+            <input id="tour-edit-location" type="text" required placeholder="Hà Nội, Việt Nam" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Sân Khấu / Sân Vận Động</label>
+            <input id="tour-edit-venue" type="text" required placeholder="Sân vận động Mỹ Đình" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Thời Gian Biểu Diễn</label>
+            <input id="tour-edit-date" type="text" required placeholder="2026-11-15T19:30:00.000Z hoặc 15/11/2026" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Trạng Thái Vé</label>
+            <select id="tour-edit-status" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400">
+              <option value="Upcoming">Upcoming (Sắp Diễn Ra)</option>
+              <option value="Sold Out">Sold Out (Hết Vé)</option>
+              <option value="Ongoing">Ongoing (Đang Diễn Ra)</option>
+              <option value="Completed">Completed (Đã Kết Thúc)</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Khoảng Giá Vé</label>
+            <input id="tour-edit-price" type="text" placeholder="800.000đ - 3.800.000đ" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+          <div>
+            <label class="block text-zinc-400 mb-1 font-semibold">Link Đặt Vé</label>
+            <input id="tour-edit-ticketlink" type="text" placeholder="https://ticketbox.vn" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Link Poster Đêm Diễn</label>
+          <input id="tour-edit-poster" type="url" placeholder="https://images.unsplash.com/..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400" />
+        </div>
+        <div>
+          <label class="block text-zinc-400 mb-1 font-semibold">Mô Tả Đêm Diễn</label>
+          <textarea id="tour-edit-desc" rows="2" placeholder="Đêm nhạc mở màn hoành tráng..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400"></textarea>
+        </div>
+        <button type="submit" class="w-full py-3 bg-amber-400 hover:bg-amber-300 text-black font-black uppercase rounded-xl transition mt-2">Lưu Tour Diễn</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT CLIENT DATA HANDLER -->
+  <script src="../js/api.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // 1. DATASETS IN-MEMORY & LOCALSTORAGE PERSISTENCE
+      let contents = [];
+      let products = [];
+      let orders = [];
+      let tours = [];
+      let settings = null;
+
+      function syncStorage() {
+        localStorage.setItem('mtp_content', JSON.stringify(contents));
+        localStorage.setItem('mtp_content_data', JSON.stringify(contents));
+        localStorage.setItem('mtp_products', JSON.stringify(products));
+        localStorage.setItem('mtp_product_data', JSON.stringify(products));
+        localStorage.setItem('mtp_orders', JSON.stringify(orders));
+        localStorage.setItem('mtp_orders_data', JSON.stringify(orders));
+        localStorage.setItem('mtp_tours', JSON.stringify(tours));
+        if (settings) localStorage.setItem('mtp_settings', JSON.stringify(settings));
+      }
+
+      async function loadAllData() {
+        if (window.api) {
+          const [cRes, pRes, tRes, sRes, oRes] = await Promise.all([
+            window.api.getContent(),
+            window.api.getProducts(),
+            window.api.getTours(),
+            window.api.getSettings(),
+            window.api.getOrders()
+          ]);
+          contents = (cRes && cRes.data) ? cRes.data : [];
+          products = (pRes && pRes.data) ? pRes.data : [];
+          tours = (tRes && tRes.data) ? tRes.data : [];
+          settings = (sRes && sRes.data) ? sRes.data : null;
+          orders = (oRes && oRes.data && oRes.data.length > 0) ? oRes.data : [];
+        } else {
+          contents = JSON.parse(localStorage.getItem('mtp_content') || '[]');
+          products = JSON.parse(localStorage.getItem('mtp_products') || '[]');
+          tours = JSON.parse(localStorage.getItem('mtp_tours') || '[]');
+          settings = JSON.parse(localStorage.getItem('mtp_settings') || 'null');
+          orders = JSON.parse(localStorage.getItem('mtp_orders') || '[]');
+        }
+
+        if (!orders || orders.length === 0) {
+          const storedOrders = localStorage.getItem('mtp_orders');
+          if (storedOrders !== null) {
+            try { orders = JSON.parse(storedOrders); } catch (e) { orders = []; }
+          } else {
+            orders = [
+              { _id: 'ord_101', name: 'Nguyễn Văn Tuấn (Sky Hà Nội)', phone: '0912345678', address: 'Hoàn Kiếm, Hà Nội', amount: 1540000, payment: 'COD', status: 'Completed', date: '2026-09-24', items: 'Official SKY Lightstick Ver. 2' },
+              { _id: 'ord_102', name: 'Trần Thị Thảo (Sky Sài Gòn)', phone: '0988776655', address: 'Landmark 81, TP.HCM', amount: 890000, payment: 'BankTransfer', status: 'Processing', date: '2026-09-25', items: 'Hoodie "Chúng Ta Của Tương Lai"' },
+              { _id: 'ord_103', name: 'Lê Hoàng Phúc', phone: '0903112233', address: 'Hải Châu, Đà Nẵng', amount: 650000, payment: 'COD', status: 'Pending', date: '2026-09-27', items: 'T-Shirt Oversized "M-TP World Tour"' }
+            ];
+            localStorage.setItem('mtp_orders', JSON.stringify(orders));
+          }
+        }
+
+        syncStorage();
+        renderAll();
+      }
+
+      const showToast = (text) => {
+        const toast = document.getElementById('admin-toast');
+        const toastText = document.getElementById('admin-toast-text');
+        if (toast && toastText) {
+          toastText.innerText = text;
+          toast.classList.remove('hidden');
+          setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+      };
+
+      // 2. TAB SWITCHING SYSTEM
+      const sections = {
+        dashboard: document.getElementById('section-dashboard'),
+        content: document.getElementById('section-content'),
+        shop: document.getElementById('section-shop'),
+        orders: document.getElementById('section-orders'),
+        tour: document.getElementById('section-tour'),
+        home: document.getElementById('section-home'),
+        about: document.getElementById('section-about'),
+        content_page: document.getElementById('section-content-page'),
+        shop_page: document.getElementById('section-shop-page'),
+        tour_page: document.getElementById('section-tour-page'),
+        footer_page: document.getElementById('section-footer-page')
+      };
+
+      const navBtns = {
+        dashboard: document.getElementById('nav-btn-dashboard'),
+        content: document.getElementById('nav-btn-content'),
+        shop: document.getElementById('nav-btn-shop'),
+        orders: document.getElementById('nav-btn-orders'),
+        tour: document.getElementById('nav-btn-tour'),
+        home: document.getElementById('nav-btn-home'),
+        about: document.getElementById('nav-btn-about'),
+        content_page: document.getElementById('nav-btn-content-page'),
+        shop_page: document.getElementById('nav-btn-shop-page'),
+        tour_page: document.getElementById('nav-btn-tour-page'),
+        footer_page: document.getElementById('nav-btn-footer-page')
+      };
+
+      const pageHeading = document.getElementById('page-heading');
+      const pageBadge = document.getElementById('page-badge');
+
+      const switchTab = (activeKey) => {
+        Object.keys(sections).forEach(k => {
+          if (sections[k]) {
+            if (k === activeKey) sections[k].classList.remove('hidden');
+            else sections[k].classList.add('hidden');
+          }
+          if (navBtns[k]) {
+            if (k === activeKey) {
+              navBtns[k].className = 'w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 bg-amber-400 text-black font-extrabold shadow-lg shadow-amber-400/20';
+            } else {
+              navBtns[k].className = 'w-full text-left flex items-center gap-3.5 px-3.5 py-3 rounded-xl transition duration-200 text-zinc-400 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-zinc-800';
+            }
+          }
+        });
+
+        const titles = {
+          dashboard: 'Dashboard Thống Kê',
+          content: 'Quản Lý Danh Sách Media & MV',
+          shop: 'Quản Lý Sản Phẩm Merchandise',
+          orders: 'Quản Lý Đơn Đặt Hàng',
+          tour: 'Quản Lý Đêm Diễn & Concert',
+          home: 'Quản Lý Cấu Hình Trang Chủ',
+          about: 'Quản Lý Cấu Hình Trang About',
+          content_page: 'Quản Lý Giao Diện Trang Content',
+          shop_page: 'Quản Lý Giao Diện Trang Shop',
+          tour_page: 'Quản Lý Giao Diện Trang Tour',
+          footer_page: 'Quản Lý Footer & Thông Tin Chung'
+        };
+
+        if (pageHeading) pageHeading.innerText = titles[activeKey] || 'Admin CMS';
+        renderAll();
+      };
+
+      Object.keys(navBtns).forEach(k => {
+        navBtns[k]?.addEventListener('click', () => switchTab(k));
+      });
+
+      document.getElementById('btn-quick-add-content')?.addEventListener('click', () => {
+        switchTab('content');
+        openContentModal();
+      });
+
+      document.getElementById('btn-quick-add-product')?.addEventListener('click', () => {
+        switchTab('shop');
+        openProductModal();
+      });
+
+      document.getElementById('btn-quick-add-tour')?.addEventListener('click', () => {
+        switchTab('tour');
+        openTourModal();
+      });
+
+      // 3. RENDERERS
+      function renderAll() {
+        // Render Stats
+        document.getElementById('stat-content-count').innerText = contents.length;
+        document.getElementById('stat-product-count').innerText = products.length;
+        document.getElementById('stat-order-count').innerText = orders.length;
+
+        const totalRevenue = orders.filter(o => o.status !== 'Cancelled').reduce((sum, o) => sum + (Number(o.amount) || 0), 0);
+        document.getElementById('stat-revenue-total').innerText = totalRevenue.toLocaleString('vi-VN') + 'đ';
+
+        // Render Dash Recent Orders
+        document.getElementById('dash-recent-orders').innerHTML = orders.length === 0 ? '<tr><td colspan="3" class="py-4 text-center text-zinc-600 text-xs">Chưa có đơn hàng nào</td></tr>' : orders.slice(0, 5).map(o => `
+          <tr>
+            <td class="py-2.5 font-bold text-white">${o.name}</td>
+            <td class="py-2.5 font-semibold text-emerald-400">${Number(o.amount).toLocaleString('vi-VN')}đ</td>
+            <td class="py-2.5">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${o.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-400' : (o.status === 'Processing' ? 'bg-amber-500/20 text-amber-400' : 'bg-zinc-800 text-zinc-400')}">${o.status}</span>
+            </td>
+          </tr>
+        `).join('');
+
+        // Render Dash Recent Content
+        document.getElementById('dash-recent-content').innerHTML = contents.length === 0 ? '<div class="text-center py-6 text-zinc-600 text-xs">Chưa có nội dung media</div>' : contents.slice(0, 4).map(c => `
+          <div class="flex items-center justify-between p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800">
+            <div class="flex items-center gap-3">
+              <img src="${c.cover_image || c.thumbnail}" class="w-10 h-10 rounded-xl object-cover" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'" />
+              <div>
+                <div class="font-bold text-white text-xs">${c.title}</div>
+                <div class="text-[10px] text-zinc-500 uppercase">${c.type} &bull; ${c.views || '0 views'}</div>
+              </div>
+            </div>
+            <a href="${c.youtube_url || '#'}" target="_blank" class="text-xs text-amber-400 hover:underline">Xem MV</a>
+          </div>
+        `).join('');
+
+        // Render Content Table
+        document.getElementById('table-content-list').innerHTML = contents.length === 0 ? '<tr><td colspan="5" class="p-8 text-center text-zinc-600 text-xs">Danh sách nội dung trống. Bấm "Thêm Tác Phẩm" để thêm mới!</td></tr>' : contents.map(c => `
+          <tr class="hover:bg-zinc-900/40 transition">
+            <td class="p-4">
+              <img src="${c.cover_image || c.thumbnail}" class="w-14 h-9 object-cover rounded-lg border border-zinc-800" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'" />
+            </td>
+            <td class="p-4 font-bold text-white">${c.title}</td>
+            <td class="p-4"><span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-400/10 text-amber-400 border border-amber-400/20 uppercase">${c.type}</span></td>
+            <td class="p-4 font-mono text-zinc-400">${c.views || '1M+ views'}</td>
+            <td class="p-4 text-right space-x-2">
+              <button onclick="editContent('${c._id}')" class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-semibold">Sửa</button>
+              <button onclick="deleteContent('${c._id}')" class="px-3 py-1 bg-rose-500/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-lg text-xs font-semibold">Xóa</button>
+            </td>
+          </tr>
+        `).join('');
+
+        // Render Product Table
+        document.getElementById('table-product-list').innerHTML = products.length === 0 ? '<tr><td colspan="6" class="p-8 text-center text-zinc-600 text-xs">Danh sách sản phẩm trống. Bấm "Thêm Sản Phẩm" để thêm mới!</td></tr>' : products.map(p => {
+          let pImg = '';
+          if (Array.isArray(p.images) && p.images.length > 0) pImg = p.images[0];
+          else if (typeof p.images === 'string' && p.images.length > 5) pImg = p.images;
+          else if (typeof p.image === 'string' && p.image.length > 5) pImg = p.image;
+          if (!pImg || pImg === 'h') pImg = 'https://bethesky.vn/_u/nd/43/sn_1720243454835.png';
+          return `
+          <tr class="hover:bg-zinc-900/40 transition">
+            <td class="p-4 flex items-center gap-3">
+              <img src="${pImg}" class="w-10 h-10 object-cover rounded-xl border border-zinc-800" onerror="this.onerror=null; this.src='https://bethesky.vn/_u/nd/43/sn_1720243454835.png'" />
+              <span class="font-bold text-white">${p.name}</span>
+            </td>
+            <td class="p-4 uppercase text-zinc-400 font-semibold text-[11px]">${p.category}</td>
+            <td class="p-4 font-bold text-emerald-400">${Number(p.price).toLocaleString('vi-VN')}đ</td>
+            <td class="p-4 font-mono text-zinc-300">${p.stock} sản phẩm</td>
+            <td class="p-4">
+              ${p.isBestSeller ? `
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black bg-gradient-to-r from-amber-500/20 to-amber-400/20 text-amber-300 border border-amber-400/40 shadow-sm animate-pulse">
+                  <i class="fa-solid fa-fire text-amber-400"></i> BEST SELLER
+                </span>
+              ` : `
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold text-zinc-500 bg-zinc-900 border border-zinc-800">
+                  Tiêu chuẩn
+                </span>
+              `}
+            </td>
+            <td class="p-4 text-right space-x-1.5 whitespace-nowrap">
+              <button onclick="toggleBestSeller('${p._id}')" class="px-2.5 py-1 ${p.isBestSeller ? 'bg-amber-400/20 text-amber-300 hover:bg-amber-400/30 border-amber-400/30' : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white border-zinc-700'} border rounded-lg text-xs font-semibold transition" title="Bật/Tắt tag Best Seller">
+                <i class="fa-solid fa-fire text-amber-400"></i> ${p.isBestSeller ? 'Bỏ Tag' : 'Gắn Tag'}
+              </button>
+              <button onclick="editProduct('${p._id}')" class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-semibold">Sửa</button>
+              <button onclick="deleteProduct('${p._id}')" class="px-3 py-1 bg-rose-500/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-lg text-xs font-semibold">Xóa</button>
+            </td>
+          </tr>
+        `; }).join('');
+
+        // Render Orders Table
+        document.getElementById('table-orders-list').innerHTML = orders.length === 0 ? '<tr><td colspan="6" class="p-8 text-center text-zinc-600 text-xs">Chưa có đơn hàng nào</td></tr>' : orders.map(o => `
+          <tr class="hover:bg-zinc-900/40 transition">
+            <td class="p-4">
+              <div class="font-bold text-white">#${o._id}</div>
+              <div class="text-zinc-400 text-[11px]">${o.name}</div>
+              <div class="text-[10px] text-amber-400/90 font-semibold mt-0.5 line-clamp-1">${o.items || 'Merchandise'}</div>
+            </td>
+            <td class="p-4">
+              <div class="text-zinc-300 font-mono">${o.phone}</div>
+              <div class="text-zinc-500 text-[11px] line-clamp-1">${o.address}</div>
+            </td>
+            <td class="p-4 font-bold text-emerald-400">${Number(o.amount).toLocaleString('vi-VN')}đ</td>
+            <td class="p-4 uppercase text-[11px] text-zinc-400">${o.payment || 'COD'}</td>
+            <td class="p-4">
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${o.status === 'Completed' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : (o.status === 'Processing' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'bg-zinc-800 text-zinc-400')}">${o.status}</span>
+            </td>
+            <td class="p-4 text-right space-x-1.5 whitespace-nowrap">
+              <select onchange="updateOrderStatus('${o._id}', this.value)" class="bg-zinc-900 border border-zinc-800 rounded-lg text-xs text-white p-1 focus:outline-none">
+                <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                <option value="Processing" ${o.status === 'Processing' ? 'selected' : ''}>Processing</option>
+                <option value="Completed" ${o.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+              </select>
+              <button onclick="deleteOrder('${o._id}')" class="px-2 py-1 bg-rose-500/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-lg text-xs font-semibold" title="Xóa đơn">&times;</button>
+            </td>
+          </tr>
+        `).join('');
+
+        // Render Tours Table
+        const tourTable = document.getElementById('table-tour-list');
+        if (tourTable) {
+          tourTable.innerHTML = tours.length === 0 ? '<tr><td colspan="6" class="p-8 text-center text-zinc-600 text-xs">Chưa có đêm diễn nào. Bấm "Thêm Đêm Diễn Mới" để tạo!</td></tr>' : tours.map(t => `
+            <tr class="hover:bg-zinc-900/40 transition">
+              <td class="p-4">
+                <img src="${t.poster || 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80'}" class="w-14 h-10 object-cover rounded-lg border border-zinc-800" onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80'" />
+              </td>
+              <td class="p-4">
+                <div class="font-bold text-white">${t.title}</div>
+                <div class="text-[11px] text-zinc-500">${t.description ? t.description.substring(0, 45) + '...' : ''}</div>
+              </td>
+              <td class="p-4">
+                <div class="text-zinc-200 font-semibold">${t.venue || ''}</div>
+                <div class="text-zinc-500 text-[11px]">${t.location || ''}</div>
+              </td>
+              <td class="p-4 font-mono text-zinc-300">${t.event_date ? (t.event_date.includes('T') ? t.event_date.split('T')[0] : t.event_date) : ''}</td>
+              <td class="p-4">
+                <div class="text-amber-400 font-bold">${t.priceRange || '800.000đ - 3.800.000đ'}</div>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${t.status === 'Sold Out' ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}">${t.status || 'Upcoming'}</span>
+              </td>
+              <td class="p-4 text-right space-x-2">
+                <button onclick="editTour('${t._id}')" class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs font-semibold">Sửa</button>
+                <button onclick="deleteTour('${t._id}')" class="px-3 py-1 bg-rose-500/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-lg text-xs font-semibold">Xóa</button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // Populate Settings Form
+        if (settings) {
+          const soc = settings.socials || {};
+          if (document.getElementById('setting-social-youtube')) document.getElementById('setting-social-youtube').value = soc.youtube || '';
+          if (document.getElementById('setting-social-spotify')) document.getElementById('setting-social-spotify').value = soc.spotify || '';
+          if (document.getElementById('setting-social-apple')) document.getElementById('setting-social-apple').value = soc.apple || '';
+          if (document.getElementById('setting-social-tiktok')) document.getElementById('setting-social-tiktok').value = soc.tiktok || '';
+          if (document.getElementById('setting-social-facebook')) document.getElementById('setting-social-facebook').value = soc.facebook || '';
+          if (document.getElementById('setting-social-instagram')) document.getElementById('setting-social-instagram').value = soc.instagram || '';
+          if (document.getElementById('setting-social-twitter')) document.getElementById('setting-social-twitter').value = soc.twitter || '';
+
+          const ab = settings.about || {};
+          if (document.getElementById('setting-about-tag')) document.getElementById('setting-about-tag').value = ab.heroTag || '';
+          if (document.getElementById('setting-about-title')) document.getElementById('setting-about-title').value = ab.heroTitle || '';
+          if (document.getElementById('setting-about-desc')) document.getElementById('setting-about-desc').value = ab.heroDesc || '';
+          if (document.getElementById('setting-about-quote')) document.getElementById('setting-about-quote').value = ab.quote || 'Muốn ngồi ở một vị trí không ai ngồi được thì phải chịu những cảm giác không ai chịu được.';
+          if (document.getElementById('setting-about-name')) document.getElementById('setting-about-name').value = ab.artistName || '';
+          if (document.getElementById('setting-about-role')) document.getElementById('setting-about-role').value = ab.artistTitle || '';
+          if (document.getElementById('setting-about-avatar')) document.getElementById('setting-about-avatar').value = ab.artistAvatar || 'assets/images/about-banner.webp';
+          if (document.getElementById('setting-about-biotitle')) document.getElementById('setting-about-biotitle').value = ab.bioTitle || '';
+          if (document.getElementById('setting-about-biop1')) document.getElementById('setting-about-biop1').value = ab.bioP1 || '';
+          if (document.getElementById('setting-about-biop2')) document.getElementById('setting-about-biop2').value = ab.bioP2 || '';
+          if (document.getElementById('setting-about-companytitle')) document.getElementById('setting-about-companytitle').value = ab.companyTitle || 'M-TP ENTERTAINMENT';
+          if (document.getElementById('setting-about-companydesc')) document.getElementById('setting-about-companydesc').value = ab.companyDesc || '';
+
+          // Content Page Settings
+          const cp = settings.content || {};
+          if (document.getElementById('setting-content-tag')) document.getElementById('setting-content-tag').value = cp.heroTag || 'DISCOGRAPHY & MEDIA VAULT';
+          if (document.getElementById('setting-content-title')) document.getElementById('setting-content-title').value = cp.heroTitle || 'NỘI DUNG & MV CHÍNH THỨC';
+          if (document.getElementById('setting-content-desc')) document.getElementById('setting-content-desc').value = cp.heroDesc || '';
+          if (document.getElementById('setting-content-row1')) document.getElementById('setting-content-row1').value = cp.row1Title || 'MUSIC VIDEOS CHÍNH THỨC';
+          if (document.getElementById('setting-content-row2')) document.getElementById('setting-content-row2').value = cp.row2Title || 'BẢN THU ÂM AUDIO CHẤT LƯỢNG CAO';
+          if (document.getElementById('setting-content-row3')) document.getElementById('setting-content-row3').value = cp.row3Title || 'HẬU TRƯỜNG & PHIM TÀI LIỆU (BEHIND THE SCENES)';
+
+          // Shop Page Settings
+          const sp = settings.shop || {};
+          if (document.getElementById('setting-shop-tag')) document.getElementById('setting-shop-tag').value = sp.heroTag || 'EXCLUSIVE MERCHANDISE & STORE';
+          if (document.getElementById('setting-shop-title')) document.getElementById('setting-shop-title').value = sp.heroTitle || 'CỬA HÀNG M-TP STORE';
+          if (document.getElementById('setting-shop-desc')) document.getElementById('setting-shop-desc').value = sp.heroDesc || '';
+          if (document.getElementById('setting-shop-row1')) document.getElementById('setting-shop-row1').value = sp.row1Title || '🔥 SẢN PHẨM BÁN CHẠY (BEST SELLER)';
+          if (document.getElementById('setting-shop-row2')) document.getElementById('setting-shop-row2').value = sp.row2Title || 'OFFICIAL SKY LIGHTSTICK & CỔ VŨ';
+          if (document.getElementById('setting-shop-row3')) document.getElementById('setting-shop-row3').value = sp.row3Title || 'THỜI TRANG & HOODIE (APPAREL)';
+          if (document.getElementById('setting-shop-row4')) document.getElementById('setting-shop-row4').value = sp.row4Title || 'ALBUM CD & PHỤ KIỆN ĐỘC QUYỀN';
+
+          // Tour Page Settings
+          const tp = settings.tour || {};
+          if (document.getElementById('setting-tour-tag')) document.getElementById('setting-tour-tag').value = tp.heroTag || 'WORLD TOUR & LIVE EXPERIENCES';
+          if (document.getElementById('setting-tour-title')) document.getElementById('setting-tour-title').value = tp.heroTitle || 'SKY TOUR 2026: THE RESURRECTION';
+          if (document.getElementById('setting-tour-desc')) document.getElementById('setting-tour-desc').value = tp.heroDesc || '';
+          if (document.getElementById('setting-tour-nexttag')) document.getElementById('setting-tour-nexttag').value = tp.nextShowTag || 'Đêm diễn tiếp theo';
+          if (document.getElementById('setting-tour-nextinfo')) document.getElementById('setting-tour-nextinfo').value = tp.nextShowInfo || '15.11.2026 • HÀ NỘI';
+          if (document.getElementById('setting-tour-nextbtn')) document.getElementById('setting-tour-nextbtn').value = tp.nextShowBtn || 'Xem Vé';
+
+          // Footer & Global Settings
+          const gl = settings.global || {};
+          if (document.getElementById('setting-footer-company')) document.getElementById('setting-footer-company').value = gl.companyName || 'CÔNG TY TNHH M-TP ENTERTAINMENT';
+          if (document.getElementById('setting-footer-copyright')) document.getElementById('setting-footer-copyright').value = gl.copyright || '© 2026 M-TP ENTERTAINMENT. ALL RIGHTS RESERVED.';
+          if (document.getElementById('setting-footer-hotline')) document.getElementById('setting-footer-hotline').value = gl.hotline || '1900 6868';
+          if (document.getElementById('setting-footer-email')) document.getElementById('setting-footer-email').value = gl.email || 'booking@mtp.vn';
+          if (document.getElementById('setting-footer-address')) document.getElementById('setting-footer-address').value = gl.address || 'Tòa nhà M-TP, Quận 1, TP. Hồ Chí Minh, Việt Nam';
+        }
+
+        // Populate Records Form
+        if (window.api && window.api.getRecords) {
+          window.api.getRecords().then(recRes => {
+            const list = recRes.data || [];
+            if (list[0]) {
+              if (document.getElementById('setting-rec-1-val')) document.getElementById('setting-rec-1-val').value = list[0].value || '10.5M+';
+              if (document.getElementById('setting-rec-1-title')) document.getElementById('setting-rec-1-title').value = list[0].title || 'YOUTUBE SUBSCRIBERS';
+              if (document.getElementById('setting-rec-1-desc')) document.getElementById('setting-rec-1-desc').value = list[0].desc || 'Nút Kim Cương đang hướng tới';
+            }
+            if (list[1]) {
+              if (document.getElementById('setting-rec-2-val')) document.getElementById('setting-rec-2-val').value = list[1].value || '3.5 TỶ+';
+              if (document.getElementById('setting-rec-2-title')) document.getElementById('setting-rec-2-title').value = list[1].title || 'TỔNG LƯỢT XEM';
+              if (document.getElementById('setting-rec-2-desc')) document.getElementById('setting-rec-2-desc').value = list[1].desc || 'Kỷ lục người xem YouTube';
+            }
+            if (list[2]) {
+              if (document.getElementById('setting-rec-3-val')) document.getElementById('setting-rec-3-val').value = list[2].value || '25+';
+              if (document.getElementById('setting-rec-3-title')) document.getElementById('setting-rec-3-title').value = list[2].title || 'MV NO.1 TRENDING';
+              if (document.getElementById('setting-rec-3-desc')) document.getElementById('setting-rec-3-desc').value = list[2].desc || 'Kỷ lục liên tiếp toàn diện';
+            }
+            if (list[3]) {
+              if (document.getElementById('setting-rec-4-val')) document.getElementById('setting-rec-4-val').value = list[3].value || 'SKY';
+              if (document.getElementById('setting-rec-4-title')) document.getElementById('setting-rec-4-title').value = list[3].title || 'FANDOM HÙNG MẠNH';
+              if (document.getElementById('setting-rec-4-desc')) document.getElementById('setting-rec-4-desc').value = list[3].desc || 'Cộng đồng fan lớn nhất VN';
+            }
+          });
+        }
+      }
+
+      // 4. CONTENT ACTIONS
+      window.openContentModal = () => {
+        document.getElementById('content-edit-id').value = '';
+        document.getElementById('content-edit-title').value = '';
+        document.getElementById('content-edit-views').value = '100M+ views';
+        document.getElementById('content-edit-cover').value = '';
+        document.getElementById('content-edit-url').value = '';
+        document.getElementById('content-edit-desc').value = '';
+        document.getElementById('modal-content-title').innerText = 'Thêm Media Mới';
+        document.getElementById('modal-content-form').classList.remove('hidden');
+      };
+
+      document.getElementById('btn-add-content-modal')?.addEventListener('click', openContentModal);
+
+      document.getElementById('form-content-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('content-edit-id').value;
+        const item = {
+          _id: id || ('c_' + Date.now()),
+          title: document.getElementById('content-edit-title').value,
+          type: document.getElementById('content-edit-type').value,
+          views: document.getElementById('content-edit-views').value || '1M+ views',
+          cover_image: document.getElementById('content-edit-cover').value || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
+          youtube_url: document.getElementById('content-edit-url').value || 'https://www.youtube.com',
+          description: document.getElementById('content-edit-desc').value
+        };
+
+        if (id) {
+          const idx = contents.findIndex(c => c._id === id);
+          if (idx !== -1) contents[idx] = item;
+          if (window.api) await window.api.updateContent(id, item);
+        } else {
+          contents.unshift(item);
+          if (window.api) await window.api.createContent(item);
+        }
+
+        syncStorage();
+        document.getElementById('modal-content-form').classList.add('hidden');
+        showToast(id ? 'Cập nhật tác phẩm media thành công!' : 'Đã đăng tải tác phẩm media mới!');
+        renderAll();
+      });
+
+      window.editContent = (id) => {
+        const item = contents.find(c => c._id === id);
+        if (!item) return;
+        document.getElementById('content-edit-id').value = item._id;
+        document.getElementById('content-edit-title').value = item.title;
+        document.getElementById('content-edit-type').value = item.type || 'MV';
+        document.getElementById('content-edit-views').value = item.views || '';
+        document.getElementById('content-edit-cover').value = item.cover_image || item.thumbnail || '';
+        document.getElementById('content-edit-url').value = item.youtube_url || item.mediaUrl || '';
+        document.getElementById('content-edit-desc').value = item.description || '';
+        document.getElementById('modal-content-title').innerText = 'Chỉnh Sửa Tác Phẩm';
+        document.getElementById('modal-content-form').classList.remove('hidden');
+      };
+
+      window.deleteContent = async (id) => {
+        if (confirm('Bạn có chắc chắn muốn xóa tác phẩm này khỏi hệ thống?')) {
+          contents = contents.filter(c => c._id !== id);
+          syncStorage();
+          if (window.api) await window.api.deleteContent(id);
+          showToast('Đã xóa tác phẩm media.');
+          renderAll();
+        }
+      };
+
+      // 5. PRODUCT ACTIONS
+      window.openProductModal = () => {
+        document.getElementById('prod-edit-id').value = '';
+        document.getElementById('prod-edit-name').value = '';
+        document.getElementById('prod-edit-price').value = '650000';
+        document.getElementById('prod-edit-stock').value = '100';
+        document.getElementById('prod-edit-image').value = '';
+        document.getElementById('prod-edit-desc').value = '';
+        if (document.getElementById('prod-edit-bestseller')) {
+          document.getElementById('prod-edit-bestseller').checked = false;
+        }
+        document.getElementById('modal-product-title').innerText = 'Thêm Sản Phẩm Merchandise';
+        document.getElementById('modal-product-form').classList.remove('hidden');
+      };
+
+      document.getElementById('btn-add-product-modal')?.addEventListener('click', openProductModal);
+
+      document.getElementById('form-product-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('prod-edit-id').value;
+        const rawImg = document.getElementById('prod-edit-image').value.trim() || 'https://bethesky.vn/_u/nd/43/sn_1720243454835.png';
+        const isBestSellerVal = Boolean(document.getElementById('prod-edit-bestseller')?.checked);
+        const item = {
+          _id: id || ('p_' + Date.now()),
+          name: document.getElementById('prod-edit-name').value,
+          price: Number(document.getElementById('prod-edit-price').value),
+          stock: Number(document.getElementById('prod-edit-stock').value),
+          category: document.getElementById('prod-edit-category').value,
+          isBestSeller: isBestSellerVal,
+          image: rawImg,
+          images: [rawImg],
+          description: document.getElementById('prod-edit-desc').value
+        };
+
+        if (id) {
+          const idx = products.findIndex(p => p._id === id);
+          if (idx !== -1) products[idx] = item;
+          if (window.api) await window.api.updateProduct(id, item);
+        } else {
+          products.unshift(item);
+          if (window.api) await window.api.createProduct(item);
+        }
+
+        syncStorage();
+        document.getElementById('modal-product-form').classList.add('hidden');
+        showToast(id ? 'Cập nhật sản phẩm Merchandise thành công!' : 'Đã thêm sản phẩm Merchandise mới!');
+        renderAll();
+      });
+
+      window.editProduct = (id) => {
+        const item = products.find(p => p._id === id);
+        if (!item) return;
+        document.getElementById('prod-edit-id').value = item._id;
+        document.getElementById('prod-edit-name').value = item.name;
+        document.getElementById('prod-edit-price').value = item.price;
+        document.getElementById('prod-edit-stock').value = item.stock;
+        document.getElementById('prod-edit-category').value = item.category || 'apparel';
+
+        let editImg = '';
+        if (Array.isArray(item.images) && item.images.length > 0) editImg = item.images[0];
+        else if (typeof item.images === 'string' && item.images.length > 5) editImg = item.images;
+        else if (typeof item.image === 'string' && item.image.length > 5) editImg = item.image;
+        document.getElementById('prod-edit-image').value = editImg;
+
+        document.getElementById('prod-edit-desc').value = item.description || '';
+        if (document.getElementById('prod-edit-bestseller')) {
+          document.getElementById('prod-edit-bestseller').checked = Boolean(item.isBestSeller);
+        }
+        document.getElementById('modal-product-title').innerText = 'Chỉnh Sửa Sản Phẩm';
+        document.getElementById('modal-product-form').classList.remove('hidden');
+      };
+
+      window.toggleBestSeller = async (id) => {
+        const item = products.find(p => p._id === id);
+        if (!item) return;
+        item.isBestSeller = !item.isBestSeller;
+        syncStorage();
+        if (window.api) await window.api.updateProduct(id, item);
+        showToast(item.isBestSeller ? `Đã gắn tag 🔥 BEST SELLER cho "${item.name}"!` : `Đã hủy tag Best Seller của "${item.name}"`);
+        renderAll();
+      };
+
+      window.deleteProduct = async (id) => {
+        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm Merch này?')) {
+          products = products.filter(p => p._id !== id);
+          syncStorage();
+          if (window.api) await window.api.deleteProduct(id);
+          showToast('Đã xóa sản phẩm merchandise.');
+          renderAll();
+        }
+      };
+
+      // 6. ORDERS ACTIONS
+      window.updateOrderStatus = async (id, newStatus) => {
+        const item = orders.find(o => o._id === id);
+        if (item) {
+          item.status = newStatus;
+          syncStorage();
+          if (window.api) await window.api.updateOrderStatus(id, newStatus);
+          showToast(`Cập nhật trạng thái đơn #${id} thành: ${newStatus}`);
+          renderAll();
+        }
+      };
+
+      window.deleteOrder = async (id) => {
+        if (confirm(`Bạn có chắc chắn muốn xóa đơn hàng #${id}?`)) {
+          orders = orders.filter(o => o._id !== id);
+          syncStorage();
+          if (window.api) await window.api.deleteOrder(id);
+          showToast(`Đã xóa đơn hàng #${id}`);
+          renderAll();
+        }
+      };
+
+      // 7. TOUR ACTIONS
+      window.openTourModal = () => {
+        document.getElementById('tour-edit-id').value = '';
+        document.getElementById('tour-edit-title').value = '';
+        document.getElementById('tour-edit-location').value = 'Hà Nội, Việt Nam';
+        document.getElementById('tour-edit-venue').value = 'Sân vận động Mỹ Đình';
+        document.getElementById('tour-edit-date').value = '2026-11-15';
+        document.getElementById('tour-edit-status').value = 'Upcoming';
+        document.getElementById('tour-edit-price').value = '800.000đ - 3.800.000đ';
+        document.getElementById('tour-edit-ticketlink').value = 'https://ticketbox.vn';
+        document.getElementById('tour-edit-poster').value = '';
+        document.getElementById('tour-edit-desc').value = '';
+        document.getElementById('modal-tour-title').innerText = 'Thêm Đêm Diễn Mới';
+        document.getElementById('modal-tour-form').classList.remove('hidden');
+      };
+
+      document.getElementById('btn-add-tour-modal')?.addEventListener('click', openTourModal);
+
+      document.getElementById('form-tour-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('tour-edit-id').value;
+        const item = {
+          _id: id || ('tour_' + Date.now()),
+          title: document.getElementById('tour-edit-title').value,
+          location: document.getElementById('tour-edit-location').value,
+          venue: document.getElementById('tour-edit-venue').value,
+          event_date: document.getElementById('tour-edit-date').value,
+          status: document.getElementById('tour-edit-status').value,
+          priceRange: document.getElementById('tour-edit-price').value,
+          ticket_link: document.getElementById('tour-edit-ticketlink').value,
+          poster: document.getElementById('tour-edit-poster').value || 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80',
+          description: document.getElementById('tour-edit-desc').value
+        };
+
+        if (id) {
+          const idx = tours.findIndex(t => t._id === id);
+          if (idx !== -1) tours[idx] = item;
+          if (window.api) await window.api.updateTour(id, item);
+        } else {
+          tours.unshift(item);
+          if (window.api) await window.api.createTour(item);
+        }
+
+        syncStorage();
+        document.getElementById('modal-tour-form').classList.add('hidden');
+        showToast(id ? 'Cập nhật tour diễn thành công!' : 'Đã thêm đêm diễn mới!');
+        renderAll();
+      });
+
+      window.editTour = (id) => {
+        const item = tours.find(t => t._id === id);
+        if (!item) return;
+        document.getElementById('tour-edit-id').value = item._id;
+        document.getElementById('tour-edit-title').value = item.title;
+        document.getElementById('tour-edit-location').value = item.location || '';
+        document.getElementById('tour-edit-venue').value = item.venue || '';
+        document.getElementById('tour-edit-date').value = item.event_date ? (item.event_date.includes('T') ? item.event_date.split('T')[0] : item.event_date) : '';
+        document.getElementById('tour-edit-status').value = item.status || 'Upcoming';
+        document.getElementById('tour-edit-price').value = item.priceRange || '';
+        document.getElementById('tour-edit-ticketlink').value = item.ticket_link || '';
+        document.getElementById('tour-edit-poster').value = item.poster || '';
+        document.getElementById('tour-edit-desc').value = item.description || '';
+        document.getElementById('modal-tour-title').innerText = 'Chỉnh Sửa Đêm Diễn';
+        document.getElementById('modal-tour-form').classList.remove('hidden');
+      };
+
+      window.deleteTour = async (id) => {
+        if (confirm('Bạn có chắc chắn muốn xóa đêm diễn này khỏi lịch trình?')) {
+          tours = tours.filter(t => t._id !== id);
+          syncStorage();
+          if (window.api) await window.api.deleteTour(id);
+          showToast('Đã xóa đêm diễn.');
+          renderAll();
+        }
+      };
+
+      // 8. HOME CMS ACTIONS (LƯU CẤU HÌNH TRANG CHỦ & MẠNG XÃ HỘI & KỶ LỤC)
+      document.getElementById('form-home-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const updatedSocials = {
+          youtube: document.getElementById('setting-social-youtube')?.value || '',
+          spotify: document.getElementById('setting-social-spotify')?.value || '',
+          apple: document.getElementById('setting-social-apple')?.value || '',
+          tiktok: document.getElementById('setting-social-tiktok')?.value || '',
+          facebook: document.getElementById('setting-social-facebook')?.value || '',
+          instagram: document.getElementById('setting-social-instagram')?.value || '',
+          twitter: document.getElementById('setting-social-twitter')?.value || ''
+        };
+
+        if (!settings) settings = {};
+        settings.socials = updatedSocials;
+        if (!settings.home) settings.home = {};
+        settings.home.title = document.getElementById('setting-home-title')?.value || 'SƠN TÙNG M-TP';
+        settings.home.badge = document.getElementById('setting-home-badge')?.value || 'M-TP ENTERTAINMENT OFFICIAL';
+        settings.home.desc = document.getElementById('setting-home-desc')?.value || '';
+
+        syncStorage();
+        if (window.api) {
+          await window.api.saveSettings(settings);
+
+          // Lưu 4 Kỷ Lục Âm Nhạc
+          const records = [
+            {
+              id: 'rec_1',
+              value: document.getElementById('setting-rec-1-val')?.value.trim() || '10.5M+',
+              title: document.getElementById('setting-rec-1-title')?.value.trim() || 'YOUTUBE SUBSCRIBERS',
+              desc: document.getElementById('setting-rec-1-desc')?.value.trim() || 'Nút Kim Cương đang hướng tới'
+            },
+            {
+              id: 'rec_2',
+              value: document.getElementById('setting-rec-2-val')?.value.trim() || '3.5 TỶ+',
+              title: document.getElementById('setting-rec-2-title')?.value.trim() || 'TỔNG LƯỢT XEM',
+              desc: document.getElementById('setting-rec-2-desc')?.value.trim() || 'Kỷ lục người xem YouTube'
+            },
+            {
+              id: 'rec_3',
+              value: document.getElementById('setting-rec-3-val')?.value.trim() || '25+',
+              title: document.getElementById('setting-rec-3-title')?.value.trim() || 'MV NO.1 TRENDING',
+              desc: document.getElementById('setting-rec-3-desc')?.value.trim() || 'Kỷ lục liên tiếp toàn diện'
+            },
+            {
+              id: 'rec_4',
+              value: document.getElementById('setting-rec-4-val')?.value.trim() || 'SKY',
+              title: document.getElementById('setting-rec-4-title')?.value.trim() || 'FANDOM HÙNG MẠNH',
+              desc: document.getElementById('setting-rec-4-desc')?.value.trim() || 'Cộng đồng fan lớn nhất VN'
+            }
+          ];
+          await window.api.saveRecords(records);
+        }
+        showToast('Đã lưu cấu hình Trang Chủ & Mạng xã hội & 4 Kỷ lục thành công!');
+        renderAll();
+      });
+
+      // 9. ABOUT CMS ACTIONS (LƯU CẤU HÌNH TRANG ABOUT)
+      document.getElementById('form-about-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const updatedAbout = {
+          heroTag: document.getElementById('setting-about-tag')?.value || 'THE ARTIST & VISIONARY',
+          heroTitle: document.getElementById('setting-about-title')?.value || 'VỀ SƠN TÙNG M-TP',
+          heroDesc: document.getElementById('setting-about-desc')?.value || '',
+          quote: document.getElementById('setting-about-quote')?.value || 'Muốn ngồi ở một vị trí không ai ngồi được thì phải chịu những cảm giác không ai chịu được.',
+          artistName: document.getElementById('setting-about-name')?.value || 'Nguyễn Thanh Tùng',
+          artistTitle: document.getElementById('setting-about-role')?.value || 'Chủ tịch sáng lập & CEO M-TP Entertainment',
+          artistAvatar: document.getElementById('setting-about-avatar')?.value || 'assets/images/about-banner.webp',
+          bioTitle: document.getElementById('setting-about-biotitle')?.value || 'KHI ÂM NHẠC VƯỢT QUA MỌI GIỚI HẠN',
+          bioP1: document.getElementById('setting-about-biop1')?.value || '',
+          bioP2: document.getElementById('setting-about-biop2')?.value || '',
+          companyTitle: document.getElementById('setting-about-companytitle')?.value || 'M-TP ENTERTAINMENT',
+          companyDesc: document.getElementById('setting-about-companydesc')?.value || ''
+        };
+
+        if (!settings) settings = {};
+        settings.about = updatedAbout;
+        syncStorage();
+        if (window.api) {
+          await window.api.saveSettings(settings);
+        }
+        showToast('Đã lưu cấu hình Hồ sơ nghệ sĩ & Trang About thành công!');
+        renderAll();
+      });
+
+      // 10. CONTENT PAGE CMS ACTIONS
+      document.getElementById('form-content-page-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const updatedContent = {
+          heroTag: document.getElementById('setting-content-tag')?.value || 'DISCOGRAPHY & MEDIA VAULT',
+          heroTitle: document.getElementById('setting-content-title')?.value || 'NỘI DUNG & MV CHÍNH THỨC',
+          heroDesc: document.getElementById('setting-content-desc')?.value || '',
+          row1Title: document.getElementById('setting-content-row1')?.value || 'MUSIC VIDEOS CHÍNH THỨC',
+          row2Title: document.getElementById('setting-content-row2')?.value || 'BẢN THU ÂM AUDIO CHẤT LƯỢNG CAO',
+          row3Title: document.getElementById('setting-content-row3')?.value || 'HẬU TRƯỜNG & PHIM TÀI LIỆU (BEHIND THE SCENES)'
+        };
+        if (!settings) settings = {};
+        settings.content = updatedContent;
+        syncStorage();
+        if (window.api) await window.api.saveSettings(settings);
+        showToast('Đã lưu cấu hình Trang Content thành công!');
+        renderAll();
+      });
+
+      // 11. SHOP PAGE CMS ACTIONS
+      document.getElementById('form-shop-page-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const updatedShop = {
+          heroTag: document.getElementById('setting-shop-tag')?.value || 'EXCLUSIVE MERCHANDISE & STORE',
+          heroTitle: document.getElementById('setting-shop-title')?.value || 'CỬA HÀNG M-TP STORE',
+          heroDesc: document.getElementById('setting-shop-desc')?.value || '',
+          row1Title: document.getElementById('setting-shop-row1')?.value || '🔥 SẢN PHẨM BÁN CHẠY (BEST SELLER)',
+          row2Title: document.getElementById('setting-shop-row2')?.value || 'OFFICIAL SKY LIGHTSTICK & CỔ VŨ',
+          row3Title: document.getElementById('setting-shop-row3')?.value || 'THỜI TRANG & HOODIE (APPAREL)',
+          row4Title: document.getElementById('setting-shop-row4')?.value || 'ALBUM CD & PHỤ KIỆN ĐỘC QUYỀN'
+        };
+        if (!settings) settings = {};
+        settings.shop = updatedShop;
+        syncStorage();
+        if (window.api) await window.api.saveSettings(settings);
+        showToast('Đã lưu cấu hình Trang Shop thành công!');
+        renderAll();
+      });
+
+      // 12. TOUR PAGE CMS ACTIONS
+      document.getElementById('form-tour-page-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const updatedTour = {
+          heroTag: document.getElementById('setting-tour-tag')?.value || 'WORLD TOUR & LIVE EXPERIENCES',
+          heroTitle: document.getElementById('setting-tour-title')?.value || 'SKY TOUR 2026: THE RESURRECTION',
+          heroDesc: document.getElementById('setting-tour-desc')?.value || '',
+          nextShowTag: document.getElementById('setting-tour-nexttag')?.value || 'Đêm diễn tiếp theo',
+          nextShowInfo: document.getElementById('setting-tour-nextinfo')?.value || '15.11.2026 • HÀ NỘI',
+          nextShowBtn: document.getElementById('setting-tour-nextbtn')?.value || 'Xem Vé'
+        };
+        if (!settings) settings = {};
+        settings.tour = updatedTour;
+        syncStorage();
+        if (window.api) await window.api.saveSettings(settings);
+        showToast('Đã lưu cấu hình Trang Tour thành công!');
+        renderAll();
+      });
+
+      // 13. FOOTER PAGE CMS ACTIONS
+      document.getElementById('form-footer-page-save')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const updatedGlobal = {
+          companyName: document.getElementById('setting-footer-company')?.value || 'CÔNG TY TNHH M-TP ENTERTAINMENT',
+          copyright: document.getElementById('setting-footer-copyright')?.value || '© 2026 M-TP ENTERTAINMENT. ALL RIGHTS RESERVED.',
+          hotline: document.getElementById('setting-footer-hotline')?.value || '1900 6868',
+          email: document.getElementById('setting-footer-email')?.value || 'booking@mtp.vn',
+          address: document.getElementById('setting-footer-address')?.value || 'Tòa nhà M-TP, Quận 1, TP. Hồ Chí Minh, Việt Nam'
+        };
+        if (!settings) settings = {};
+        settings.global = updatedGlobal;
+        syncStorage();
+        if (window.api) await window.api.saveSettings(settings);
+        showToast('Đã lưu thông tin Footer & Doanh nghiệp thành công!');
+        renderAll();
+      });
+
+      // LOGOUT
+      document.getElementById('btn-admin-logout')?.addEventListener('click', () => {
+        if (confirm('Bạn có chắc chắn muốn đăng xuất khỏi Admin CMS?')) {
+          if (window.api) window.api.logout();
+          window.location.href = '../index.html';
+        }
+      });
+
+      await loadAllData();
+    });
+  </script>
+</body>
+</html>

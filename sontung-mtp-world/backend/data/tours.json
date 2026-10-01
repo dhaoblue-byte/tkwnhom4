@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "tour_01",
+    "title": "SKY TOUR 2026 - THE RESURRECTION",
+    "location": "Hà Nội, Việt Nam",
+    "venue": "Sân vận động Quốc gia Mỹ Đình",
+    "event_date": "2026-11-15T19:30:00.000Z",
+    "priceRange": "800.000đ - 3.800.000đ",
+    "ticket_link": "https://ticketbox.vn",
+    "status": "Upcoming",
+    "poster": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80",
+    "description": "Đêm mở màn siêu đại nhạc hội SKY TOUR 2026 với sân khấu ánh sáng 360 độ và dàn âm thanh quốc tế."
+  },
+  {
+    "_id": "tour_02",
+    "title": "SKY TOUR 2026 - ELECTRIC NIGHT",
+    "location": "TP. Hồ Chí Minh, Việt Nam",
+    "venue": "Sân vận động Quân khu 7",
+    "event_date": "2026-11-28T19:30:00.000Z",
+    "priceRange": "850.000đ - 4.500.000đ",
+    "ticket_link": "https://ticketbox.vn",
+    "status": "Upcoming",
+    "poster": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&q=80",
+    "description": "Không gian âm nhạc bùng nổ quy tụ hơn 40.000 khán giả cuồng nhiệt của đại gia đình SKY."
+  },
+  {
+    "_id": "tour_03",
+    "title": "SKY TOUR 2026 - OCEAN BREEZE",
+    "location": "Đà Nẵng, Việt Nam",
+    "venue": "Cung Thể thao Tiên Sơn",
+    "event_date": "2026-12-12T20:00:00.000Z",
+    "priceRange": "650.000đ - 3.200.000đ",
+    "ticket_link": "#",
+    "status": "Sold Out",
+    "poster": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=80",
+    "description": "Toàn bộ vé đã 'cháy sạch' trong 15 phút mở bán đầu tiên. Hẹn gặp lại SKY miền Trung!"
+  }
+]

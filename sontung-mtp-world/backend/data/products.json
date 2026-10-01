@@ -1,0 +1,80 @@
+[
+    {
+        "_id": "p_1790824447520",
+        "name": "Sơn Tùng M-TP SKYLIGHT – Lightstick chính thức hình đám mây dành cho SKY",
+        "category": "lightstick",
+        "price": 1100000,
+        "images": ["https://bethesky.vn/_u/nd/43/sn_1720243469708.png"],
+        "image": "https://bethesky.vn/_u/nd/43/sn_1720243469708.png",
+        "sizes": ["FreeSize"],
+        "stock": 250,
+        "isBestSeller": true,
+        "description": "Lightstick chính thức của fandom SKY, thiết kế hình đám mây. Có 5 màu: xanh dương, xanh lá, hồng, vàng và trắng cực quang. Kích thước 154,8 × 88,4 × 238,7 mm. Hộp gồm lightstick, charm mặt trời, dây đeo, túi rút và hướng dẫn sử dụng.",
+        "createdAt": "2026-10-01T10:14:07.7053337+07:00"
+    },
+    {
+        "_id": "p_1790824600101",
+        "name": "BE THE SKY Hoodie - Chúng Ta Của Tương Lai Limited Edition",
+        "category": "apparel",
+        "price": 890000,
+        "images": ["https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80"],
+        "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",
+        "sizes": ["S", "M", "L", "XL"],
+        "stock": 80,
+        "isBestSeller": true,
+        "description": "Chất liệu nỉ cotton 100% định lượng cao 380gsm, thêu logo phản quang công nghệ độc quyền, giữ form cao cấp.",
+        "createdAt": "2026-10-01T11:00:00.0000000+07:00"
+    },
+    {
+        "_id": "p_1790824600102",
+        "name": "Album SKY TOUR Original Soundtrack Boxset (CD + 100P Photobook + USB Bản Giới Hạn)",
+        "category": "album",
+        "price": 650000,
+        "images": ["https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80"],
+        "image": "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80",
+        "sizes": ["Boxset"],
+        "stock": 60,
+        "isBestSeller": true,
+        "description": "Hộp đĩa CD cao cấp kèm photobook 100 trang ảnh độc quyền concert SKY TOUR, chữ ký dập kim loại sang trọng.",
+        "createdAt": "2026-10-01T11:05:00.0000000+07:00"
+    },
+    {
+        "_id": "p_1790824494046",
+        "name": "BE THE SKY T-shirt, Áo thun Sơn Tùng M-TP unisex cotton thêu biểu tượng mặt trời",
+        "category": "apparel",
+        "price": 495000,
+        "images": ["https://bethesky.vn/_u/nd/43/sn_1720243454835.png"],
+        "image": "https://bethesky.vn/_u/nd/43/sn_1720243454835.png",
+        "sizes": ["FreeSize"],
+        "stock": 100,
+        "isBestSeller": false,
+        "description": "Áo thun unisex thuộc BE THE SKY Collection, chất liệu 100% cotton, thiết kế có chi tiết thêu biểu tượng mặt trời. Phù hợp mặc thường ngày hoặc phối đồ phong cách streetwear.",
+        "createdAt": "2026-10-01T10:14:54.0792233+07:00"
+    },
+    {
+        "_id": "p_1790824534595",
+        "name": "Sơn Tùng M-TP BE THE SKY Hat – Mũ lưỡi trai màu trắng kem thêu chữ Be The Sky",
+        "category": "accessory",
+        "price": 275000,
+        "images": ["https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80"],
+        "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+        "sizes": ["FreeSize"],
+        "stock": 100,
+        "isBestSeller": false,
+        "description": "Mũ màu trắng kem, có dòng chữ “Be The Sky” thêu nổi và khóa điều chỉnh kích thước. Thiết kế tối giản, có thể phối cùng trang phục thường ngày.",
+        "createdAt": "2026-10-01T10:15:34.6190759+07:00"
+    },
+    {
+        "_id": "p_1790824600103",
+        "name": "Bộ Fandom SKY Wristband Phát Quang + Bộ 10 Photocard Hologram",
+        "category": "accessory",
+        "price": 180000,
+        "images": ["https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80"],
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
+        "sizes": ["Set"],
+        "stock": 150,
+        "isBestSeller": false,
+        "description": "Vòng tay silicon phát quang trong đêm hòa nhạc kết hợp bộ 10 tấm photocard hologram phiên bản giới hạn kỷ niệm.",
+        "createdAt": "2026-10-01T11:10:00.0000000+07:00"
+    }
+]

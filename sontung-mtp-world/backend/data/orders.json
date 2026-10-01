@@ -1,0 +1,35 @@
+[
+    {
+        "_id":  "ord_101",
+        "name":  "Nguyễn Văn Tuấn (Sky Hà Nội)",
+        "phone":  "0912345678",
+        "address":  "Hoàn Kiếm, Hà Nội",
+        "amount":  1540000,
+        "payment":  "COD",
+        "status":  "Completed",
+        "date":  "2026-09-24",
+        "items":  "Official SKY Lightstick Ver. 2"
+    },
+    {
+        "_id":  "ord_102",
+        "name":  "Trần Thị Thảo (Sky Sài Gòn)",
+        "phone":  "0988776655",
+        "address":  "Landmark 81, TP.HCM",
+        "amount":  890000,
+        "payment":  "BankTransfer",
+        "status":  "Processing",
+        "date":  "2026-09-25",
+        "items":  "Hoodie \u0027Chúng Ta Của Tương Lai\u0027"
+    },
+    {
+        "_id":  "ord_103",
+        "name":  "Lê Hoàng Phúc",
+        "phone":  "0903112233",
+        "address":  "Hải Châu, Đà Nẵng",
+        "amount":  650000,
+        "payment":  "COD",
+        "status":  "Pending",
+        "date":  "2026-09-27",
+        "items":  "T-Shirt Oversized \u0027M-TP World Tour\u0027"
+    }
+]

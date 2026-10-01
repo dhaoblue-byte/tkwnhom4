@@ -1,0 +1,71 @@
+{
+  "home": {
+    "title": "SƠN TÙNG M-TP",
+    "badge": "M-TP ENTERTAINMENT OFFICIAL",
+    "desc": "Khám phá không gian âm nhạc chính thức, lịch concert SKY TOUR 2026, cửa hàng Merchandise độc quyền và hành trình nghệ thuật của nghệ sĩ Sơn Tùng M-TP.",
+    "videoUrl": "assets/videos/hero-banner.mp4",
+    "records": [
+      { "val": "10.5M+", "title": "YOUTUBE SUBSCRIBERS", "desc": "Nút Kim Cương đang hướng tới" },
+      { "val": "3.5 TỶ+", "title": "TỔNG LƯỢT XEM", "desc": "Kỷ lục người xem YouTube" },
+      { "val": "25+", "title": "MV NO.1 TRENDING", "desc": "Kỷ lục liên tiếp toàn diện" },
+      { "val": "SKY", "title": "FANDOM HÙNG MẠNH", "desc": "Cộng đồng fan lớn nhất VN" }
+    ]
+  },
+  "content": {
+    "heroTag": "DISCOGRAPHY & MEDIA VAULT",
+    "heroTitle": "NỘI DUNG & MV CHÍNH THỨC",
+    "heroDesc": "Thưởng thức toàn bộ các siêu phẩm Music Video 4K, bản thu âm Lossless và những thước phim tài liệu hậu trường độc quyền từ Sơn Tùng M-TP.",
+    "row1Title": "MUSIC VIDEOS CHÍNH THỨC",
+    "row2Title": "BẢN THU ÂM AUDIO CHẤT LƯỢNG CAO",
+    "row3Title": "HẬU TRƯỜNG & PHIM TÀI LIỆU (BEHIND THE SCENES)"
+  },
+  "shop": {
+    "heroTag": "EXCLUSIVE MERCHANDISE & STORE",
+    "heroTitle": "CỬA HÀNG M-TP STORE",
+    "heroDesc": "Các sản phẩm gậy cổ vũ Lightstick chính hãng, bộ sưu tập thời trang Hoodie, T-Shirt phiên bản giới hạn và đĩa vật lý có chữ ký độc quyền.",
+    "row1Title": "🔥 SẢN PHẨM BÁN CHẠY (BEST SELLER)",
+    "row2Title": "OFFICIAL SKY LIGHTSTICK & CỔ VŨ",
+    "row3Title": "THỜI TRANG & HOODIE (APPAREL)",
+    "row4Title": "ALBUM CD & PHỤ KIỆN ĐỘC QUYỀN"
+  },
+  "tour": {
+    "heroTag": "WORLD TOUR & LIVE EXPERIENCES",
+    "heroTitle": "SKY TOUR 2026: THE RESURRECTION",
+    "heroDesc": "Chuyến lưu diễn âm nhạc lớn nhất lịch sử của Sơn Tùng M-TP với sân khấu visual 360 độ cực đại, công nghệ âm thanh vòm tiêu chuẩn quốc tế và dàn nhạc sống đỉnh cao.",
+    "nextShowTag": "Đêm diễn tiếp theo",
+    "nextShowInfo": "15.11.2026 • HÀ NỘI",
+    "nextShowBtn": "Xem Vé",
+    "gridTitle": "LỊCH TRÌNH ĐÊM NHẠC CHÍNH THỨC",
+    "gridDesc": "Thông tin chi tiết các điểm dừng chân, địa điểm tổ chức và liên kết đặt vé chính hãng."
+  },
+  "about": {
+    "heroTag": "THE ARTIST & VISIONARY",
+    "heroTitle": "VỀ SƠN TÙNG M-TP",
+    "heroDesc": "Hành trình của một nghệ sĩ độc lập vươn mình trở thành biểu tượng văn hóa đương đại, định hình dòng chảy âm nhạc V-Pop và truyền cảm hứng cho hàng triệu bạn trẻ.",
+    "quote": "Muốn ngồi ở một vị trí không ai ngồi được thì phải chịu những cảm giác không ai chịu được.",
+    "artistName": "Nguyễn Thanh Tùng",
+    "artistTitle": "Chủ tịch sáng lập & CEO M-TP Entertainment",
+    "artistAvatar": "assets/images/about-banner.webp",
+    "bioTitle": "KHI ÂM NHẠC VƯỢT QUA MỌI GIỚI HẠN",
+    "bioP1": "Sinh ngày 5 tháng 7 năm 1994 tại Thái Bình, Sơn Tùng M-TP bắt đầu bước vào con đường âm nhạc từ cộng đồng underground và nhanh chóng tạo nên cơn địa chấn chưa từng có với đĩa đơn đầu tay \"Cơn Mưa Ngang Qua\" vào năm 2012.",
+    "bioP2": "Không chỉ dừng lại ở vai trò một ca sĩ kiêm nhạc sĩ sở hữu hàng loạt bản hit trăm triệu views, Sơn Tùng M-TP còn là nhà sản xuất nghệ thuật tiên phong, người sáng lập M-TP Entertainment và định hình phong cách sống hiện đại cho cộng đồng SKY.",
+    "companyTitle": "M-TP ENTERTAINMENT",
+    "companyDesc": "Công ty giải trí đa phương tiện tiên phong kiến tạo các giá trị nghệ thuật nguyên bản, phát triển tài năng và đưa chuẩn mực sản xuất quốc tế đến với nền âm nhạc Việt Nam."
+  },
+  "global": {
+    "companyName": "CÔNG TY TNHH M-TP ENTERTAINMENT",
+    "address": "Tòa nhà M-TP, Quận 1, TP. Hồ Chí Minh, Việt Nam",
+    "hotline": "1900 6868",
+    "email": "booking@mtp.vn",
+    "copyright": "© 2026 M-TP ENTERTAINMENT. ALL RIGHTS RESERVED."
+  },
+  "socials": {
+    "youtube": "https://www.youtube.com/@sontungmtp",
+    "spotify": "https://open.spotify.com/artist/5dfW2vSm98sM1vj8mX0G2h",
+    "apple": "https://music.apple.com/vn/artist/son-tung-m-tp/913222383",
+    "tiktok": "https://www.tiktok.com/@sontungmtp",
+    "facebook": "https://www.facebook.com/MTP.Fan",
+    "instagram": "https://www.instagram.com/sontungmtp",
+    "twitter": "https://x.com/sontungmtp777"
+  }
+}

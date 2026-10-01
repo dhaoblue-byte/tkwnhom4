@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth bg-black">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTENT & MEDIA - SƠN TÙNG M-TP OFFICIAL</title>
+  
+  <!-- Google Fonts: Be Vietnam Pro (Chuẩn tiếng Việt không lỗi dấu) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    body, h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Be Vietnam Pro', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Be Vietnam Pro', sans-serif !important;
+      letter-spacing: -0.01em;
+    }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    .nav-glass {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .dark-overlay {
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(16px);
+    }
+    .dark-card {
+      background: #0d0e12;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .carousel-item-card {
+      scroll-snap-align: start;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen text-white selection:bg-white selection:text-black">
+
+  <!-- ============================================================== -->
+  <!-- 1. HEADER NAVIGATION (FIXED TOP)                               -->
+  <!-- ============================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 nav-glass transition-all duration-300">
+    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-16 h-20 flex justify-between items-center">
+      <!-- Nav Links -->
+      <nav class="flex items-center space-x-6 sm:space-x-10 text-xs sm:text-sm font-bold tracking-widest uppercase">
+        <a href="index.html" class="nav-item-link text-zinc-400 hover:text-white transition-colors py-1">HOME</a>
+        <a href="content.html" class="nav-item-link text-white border-b-2 border-white pb-0.5 transition-colors py-1">CONTENT</a>
+        <a href="shop.html" class="nav-item-link text-zinc-400 hover:text-white transition-colors py-1">SHOP</a>
+        <a href="tour.html" class="nav-item-link text-zinc-400 hover:text-white transition-colors py-1">TOUR</a>
+        <a href="about.html" class="hidden md:inline-block nav-item-link text-zinc-400 hover:text-white transition-colors py-1">ABOUT</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center space-x-4 sm:space-x-5 text-lg">
+        <!-- Admin CMS Link (HIDDEN by default, shown ONLY for Admin role) -->
+        <a id="header-admin-cms-btn" href="admin/index.html" class="hidden flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-zinc-900 border border-amber-500/40 hover:border-amber-400 text-amber-300 transition hover:scale-105 shadow-md" title="Mở Trang Quản Trị Admin CMS">
+          <i class="fa-solid fa-sliders text-amber-400 text-xs"></i>
+          <span>ADMIN CMS</span>
+        </a>
+
+        <!-- Notification Bell -->
+        <button id="header-bell-btn" class="hover:text-zinc-400 transition relative p-1.5 text-lg" aria-label="Notifications" title="Thông báo">
+          <i class="fa-regular fa-bell"></i>
+          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        </button>
+        
+        <!-- Header Auth Action Group (Login / Sign Up or Logged in User Pill) -->
+        <div id="header-auth-container" class="flex items-center gap-1.5 sm:gap-2">
+          <button id="btn-header-login" class="px-3 sm:px-3.5 py-1.5 text-xs font-bold text-zinc-300 hover:text-white hover:bg-zinc-800/80 rounded-full border border-zinc-700/70 transition cursor-pointer flex items-center gap-1.5">
+            <i class="fa-regular fa-user text-[11px]"></i>
+            <span>Đăng Nhập</span>
+          </button>
+          <button id="btn-header-register" class="px-3 sm:px-4 py-1.5 text-xs font-black text-black bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-full shadow-md shadow-amber-400/20 transition hover:scale-105 cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-sparkles text-[10px]"></i>
+            <span>Đăng Ký Sky</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================== -->
+  <!-- 2. CONTENT HERO BANNER                                         -->
+  <!-- ============================================================== -->
+  <section class="pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-20 px-6 sm:px-12 lg:px-16 bg-gradient-to-b from-zinc-950 via-black to-black border-b border-zinc-900">
+    <div class="max-w-[1720px] mx-auto">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="max-w-4xl">
+          <span id="content-hero-tag" class="text-xs font-bold uppercase tracking-widest text-amber-400">DISCOGRAPHY & MEDIA VAULT</span>
+          <h1 id="content-hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black uppercase tracking-[-0.01em] pt-3 pb-1 leading-[1.25] bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(251,191,36,0.35)]">
+            NỘI DUNG &amp; MV CHÍNH THỨC
+          </h1>
+          <p id="content-hero-desc" class="text-xs sm:text-sm text-zinc-400 mt-4 max-w-xl leading-relaxed">
+            Thưởng thức toàn bộ các siêu phẩm Music Video 4K, bản thu âm Lossless và những thước phim tài liệu hậu trường độc quyền từ Sơn Tùng M-TP.
+          </p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="flex flex-wrap items-center gap-2 bg-zinc-950 p-1.5 rounded-full border border-zinc-800 text-xs font-bold shrink-0">
+          <button data-type="" class="content-tab-btn px-5 py-2.5 rounded-full bg-white text-black transition">Tất Cả</button>
+          <button data-type="MV" class="content-tab-btn px-5 py-2.5 rounded-full text-zinc-400 hover:text-white transition">Music Videos</button>
+          <button data-type="Audio" class="content-tab-btn px-5 py-2.5 rounded-full text-zinc-400 hover:text-white transition">Bản Audio</button>
+          <button data-type="BehindTheScenes" class="content-tab-btn px-5 py-2.5 rounded-full text-zinc-400 hover:text-white transition">Hậu Trường</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- 3. MEDIA CAROUSEL ROWS (3 ĐẦU MỤC THEO ẢNH 2: MV, AUDIO, BTS)   -->
+  <!-- ============================================================== -->
+  <main class="py-12 sm:py-16 px-6 sm:px-12 lg:px-16 bg-black min-h-[700px]">
+    <div class="max-w-[1720px] mx-auto">
+      <!-- Dynamic Media Display: 3 Carousel Rows (Default) or Filtered Grid -->
+      <div id="content-display-container" class="space-y-16">
+        <!-- Đang tải nội dung... -->
+        <div class="text-center py-24 text-zinc-500">
+          <i class="fa-solid fa-spinner fa-spin text-3xl mb-3 text-amber-400 block"></i>
+          Đang đồng bộ thư viện nội dung media...
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- 4. COMMUNITY & NEWSLETTER                                      -->
+  <!-- ============================================================== -->
+  <section class="py-20 px-6 sm:px-12 bg-zinc-950 border-t border-zinc-900 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto text-amber-400 text-lg mb-4">
+        <i class="fa-regular fa-bell"></i>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black uppercase text-white mb-2">ĐĂNG KÝ NHẬN THÔNG BÁO MV MỚI</h2>
+      <p class="text-xs text-zinc-400 mb-6">Trở thành người đầu tiên thưởng thức các sản phẩm âm nhạc tiếp theo của Sơn Tùng M-TP.</p>
+      
+      <form id="subscribe-section-form" class="flex flex-col sm:flex-row gap-3">
+        <input
+          id="sub-section-email"
+          type="email"
+          required
+          placeholder="Nhập địa chỉ email của bạn..."
+          class="flex-1 bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-amber-400"
+        />
+        <button type="submit" class="px-8 py-3 bg-white hover:bg-zinc-200 text-black font-bold uppercase tracking-wider text-xs rounded-full transition">
+          Đăng Ký
+        </button>
+      </form>
+      <div id="sub-section-alert" class="mt-3 text-xs font-semibold hidden"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- 5. FOOTER                                                      -->
+  <!-- ============================================================== -->
+  <footer class="border-t border-zinc-900 bg-black py-12 px-6 sm:px-12 lg:px-16 text-xs text-zinc-500">
+    <div class="max-w-[1720px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center space-x-3">
+        <span class="global-company-name font-black text-white uppercase tracking-widest text-sm">M-TP ENTERTAINMENT</span>
+        <span>&bull;</span>
+        <span>SƠN TÙNG M-TP OFFICIAL UNIVERSE</span>
+      </div>
+
+      <div class="flex items-center space-x-6 uppercase tracking-wider text-[11px] font-semibold text-zinc-400">
+        <a href="index.html" class="hover:text-white transition">Home</a>
+        <a href="content.html" class="text-white transition">Content</a>
+        <a href="shop.html" class="hover:text-white transition">Shop</a>
+        <a href="tour.html" class="hover:text-white transition">Tour</a>
+        <a href="about.html" class="hover:text-white transition">About</a>
+      </div>
+
+      <div class="global-copyright">
+        &copy; 2026 M-TP Entertainment. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================== -->
+  <!-- 6. MODALS (NOTIFICATIONS & AUTH)                               -->
+  <!-- ============================================================== -->
+  <!-- Notification Modal -->
+  <div id="modal-bell" class="fixed inset-0 z-50 flex items-center justify-center dark-overlay hidden p-4">
+    <div class="dark-card rounded-3xl max-w-md w-full p-6 sm:p-8 relative">
+      <button id="close-modal-bell" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+      <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-zinc-800">
+        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-white"><i class="fa-regular fa-bell"></i></div>
+        <div>
+          <h3 class="text-base font-bold text-white uppercase tracking-wider">Thông báo M-TP World</h3>
+          <span class="text-xs text-zinc-400">Tin tức, Tour & Sự kiện mới nhất</span>
+        </div>
+      </div>
+      <div class="space-y-3 mb-6 max-h-[250px] overflow-y-auto pr-1">
+        <div class="p-3.5 rounded-2xl bg-zinc-900 border border-zinc-800">
+          <div class="flex items-center justify-between text-[10px] font-semibold text-zinc-400 mb-1">
+            <span class="text-white bg-zinc-800 px-2 py-0.5 rounded font-mono">NEW MV</span>
+            <span>Mới</span>
+          </div>
+          <p class="text-xs text-zinc-200">MV <em>"Đừng Làm Trái Tim Anh Đau"</em> đạt hơn 115 triệu lượt xem trên toàn cầu.</p>
+        </div>
+      </div>
+      <form id="subscribe-quick-form" class="space-y-3 pt-3 border-t border-zinc-800">
+        <input id="sub-email" type="email" required placeholder="Nhập email nhận thông báo..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-white" />
+        <button type="submit" class="w-full py-2.5 bg-zinc-700 hover:bg-zinc-600 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition">Đăng Ký Nhận Tin</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="modal-auth" class="fixed inset-0 z-50 flex items-center justify-center dark-overlay hidden p-4">
+    <div class="dark-card rounded-3xl max-w-md w-full p-8 relative">
+      <button id="close-modal-auth" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl font-bold">&times;</button>
+      <div class="flex border-b border-zinc-800 mb-6 text-sm font-bold">
+        <button id="tab-login" class="flex-1 pb-3 border-b-2 border-white text-white">ĐĂNG NHẬP</button>
+        <button id="tab-register" class="flex-1 pb-3 border-b-2 border-transparent text-zinc-500 hover:text-zinc-300">ĐĂNG KÝ SKY</button>
+      </div>
+      <div id="auth-feedback" class="mb-4 text-xs text-rose-400 font-semibold hidden text-center"></div>
+      <form id="form-login" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Email / Username</label>
+          <input id="login-email" type="text" required placeholder="sky@mtp.vn" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Mật khẩu</label>
+          <input id="login-password" type="password" required placeholder="••••••••" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <button type="submit" id="btn-login-submit" class="w-full py-3 bg-white text-black hover:bg-zinc-200 rounded-xl text-xs font-bold uppercase tracking-wider mt-2 transition cursor-pointer">Đăng Nhập Ngay</button>
+      </form>
+      <form id="form-register" class="space-y-4 hidden">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Username / Sky Name</label>
+          <input id="reg-name" type="text" required placeholder="sky_member" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Email</label>
+          <input id="reg-email" type="email" required placeholder="name@example.com" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Mật khẩu</label>
+          <input id="reg-password" type="password" required minlength="6" placeholder="••••••••" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-white" />
+        </div>
+        <button type="submit" id="btn-register-submit" class="w-full py-3 bg-amber-400 text-black hover:bg-amber-300 rounded-xl text-xs font-bold uppercase tracking-wider mt-2 transition cursor-pointer">Đăng Ký Tài Khoản Sky</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 4.5 CINEMA THEATER MODAL (CHIẾU MV & HẬU TRƯỜNG TRỰC TIẾP)    -->
+  <!-- ============================================================== -->
+  <div id="modal-cinema-theater" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-2xl hidden p-4 sm:p-6 md:p-8 transition-all duration-300">
+    <div class="relative w-full max-w-5xl bg-zinc-950 border border-zinc-800 rounded-3xl overflow-hidden shadow-2xl shadow-red-500/10 flex flex-col max-h-[94vh]">
+      <!-- Cinema Top Header Bar -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-zinc-800/80 bg-zinc-900/60">
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-red-600/20 text-red-400 border border-red-500/30 flex items-center gap-1.5">
+            <i class="fa-solid fa-film"></i> RẠP CHIẾU 4K TRỰC TIẾP
+          </span>
+          <div>
+            <h3 id="cinema-modal-title" class="text-sm sm:text-base font-black text-white line-clamp-1 uppercase tracking-wide">
+              Tên Tác Phẩm
+            </h3>
+            <span class="text-[11px] text-zinc-400 font-semibold">Sơn Tùng M-TP &bull; M-TP Entertainment</span>
+          </div>
+        </div>
+        <button id="close-cinema-modal" class="w-9 h-9 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-700/80 flex items-center justify-center text-sm transition cursor-pointer" title="Đóng rạp chiếu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- 16:9 Video Player Screen -->
+      <div class="relative w-full aspect-video bg-black flex items-center justify-center">
+        <iframe
+          id="cinema-modal-iframe"
+          src=""
+          class="w-full h-full border-0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <!-- Cinema Bottom Info Bar -->
+      <div class="px-6 py-3.5 bg-zinc-900/80 border-t border-zinc-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-zinc-400 font-medium">
+          <span id="cinema-modal-views" class="flex items-center gap-1.5 text-amber-400 font-bold">
+            <i class="fa-solid fa-fire"></i> 100M+ views
+          </span>
+          <span class="hidden sm:inline text-zinc-600">&bull;</span>
+          <p id="cinema-modal-desc" class="text-zinc-400 line-clamp-1 text-xs">Phát trực tiếp chất lượng cao trên nền tảng web Sơn Tùng M-TP World.</p>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 font-bold">
+            <i class="fa-solid fa-check"></i> 1080p / 4K Ultra HD
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 5. DIRECT WEB AUDIO PLAYER BAR (DÀNH CHO TRACK AUDIO)          -->
+  <!-- ============================================================== -->
+  <div id="content-audio-player-bar" class="fixed bottom-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-2xl border-t border-amber-400/40 px-6 py-4 transition-all duration-300 transform translate-y-full shadow-2xl shadow-amber-400/10">
+    <div class="max-w-[1720px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- Track details & Mini Player -->
+      <div class="flex items-center gap-4 w-full md:w-auto">
+        <div id="audio-media-container" class="relative w-24 h-16 sm:w-28 sm:h-16 rounded-2xl overflow-hidden bg-zinc-900 border border-amber-400/50 shadow-md flex-shrink-0">
+          <img id="audio-bar-cover" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover" alt="Cover" />
+          <iframe id="audio-bar-youtube" class="w-full h-full absolute inset-0 hidden border-0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full text-[9px] font-black uppercase bg-amber-400/20 text-amber-400 border border-amber-400/30 flex items-center gap-1">
+              <i class="fa-solid fa-waveform-lines text-[9px] animate-pulse"></i> Đang Phát Trực Tiếp
+            </span>
+            <span id="audio-bar-views" class="text-[11px] text-zinc-400">180M+ streams</span>
+          </div>
+          <h4 id="audio-bar-title" class="text-sm sm:text-base font-black text-white line-clamp-1 mt-0.5">MUỘN RỒI MÀ SAO CÒN (Live Stage Audio)</h4>
+          <span class="text-xs text-amber-400/90 font-bold">Sơn Tùng M-TP &bull; Official Audio Track</span>
+        </div>
+      </div>
+
+      <!-- Controls & Progress Bar -->
+      <div class="flex-1 max-w-xl w-full flex flex-col items-center gap-2">
+        <div class="flex items-center gap-4">
+          <button id="audio-bar-backward" class="text-zinc-400 hover:text-white text-sm cursor-pointer p-1 transition" title="Lùi 10s"><i class="fa-solid fa-rotate-left"></i></button>
+          <button id="audio-bar-toggle" class="w-10 h-10 rounded-full bg-amber-400 hover:bg-amber-300 text-black flex items-center justify-center text-sm font-black transition-transform hover:scale-105 shadow-lg shadow-amber-400/30 cursor-pointer" title="Phát / Tạm dừng">
+            <i class="fa-solid fa-pause" id="audio-bar-icon"></i>
+          </button>
+          <button id="audio-bar-forward" class="text-zinc-400 hover:text-white text-sm cursor-pointer p-1 transition" title="Tiến 10s"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+        <div class="w-full flex items-center gap-3 text-xs text-zinc-400 font-mono">
+          <span id="audio-current-time">00:00</span>
+          <div class="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden relative cursor-pointer" id="audio-progress-container" title="Tua nhạc">
+            <div id="audio-progress-bar" class="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full w-0 transition-all duration-100"></div>
+          </div>
+          <span id="audio-duration-time">04:36</span>
+        </div>
+      </div>
+
+      <!-- Volume & Close -->
+      <div class="flex items-center gap-4 w-full md:w-auto justify-end">
+        <button id="audio-bar-mute" class="text-zinc-400 hover:text-white text-sm p-1.5 transition cursor-pointer" title="Bật/Tắt âm">
+          <i class="fa-solid fa-volume-high" id="audio-bar-vol-icon"></i>
+        </button>
+        <button id="audio-bar-close" class="px-3.5 py-1.5 rounded-full text-xs font-bold text-zinc-400 hover:text-white bg-zinc-900 border border-zinc-700/80 hover:border-zinc-500 transition cursor-pointer flex items-center gap-1.5" title="Đóng thanh phát">
+          <i class="fa-solid fa-xmark"></i>
+          <span>Đóng</span>
+        </button>
+      </div>
+    </div>
+    <!-- Hidden native audio element -->
+    <audio id="content-native-audio" preload="none"></audio>
+  </div>
+
+  <!-- API Engine & Page Script -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Modal Open/Close handlers
+      const openModal = (id) => document.getElementById(id)?.classList.remove('hidden');
+      const closeModal = (id) => document.getElementById(id)?.classList.add('hidden');
+
+      document.getElementById('header-bell-btn')?.addEventListener('click', () => openModal('modal-bell'));
+      document.getElementById('close-modal-bell')?.addEventListener('click', () => closeModal('modal-bell'));
+      document.getElementById('close-modal-auth')?.addEventListener('click', () => closeModal('modal-auth'));
+
+      // Filter tabs click listener
+      document.querySelectorAll('.content-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.content-tab-btn').forEach(b => {
+            b.classList.remove('bg-white', 'text-black');
+            b.classList.add('text-zinc-400');
+          });
+          btn.classList.add('bg-white', 'text-black');
+          btn.classList.remove('text-zinc-400');
+          window.filterByCategory(btn.dataset.type);
+        });
+      });
+
+      let loadedContentItems = [];
+      let currentFilterType = '';
+      let siteSettings = null;
+
+      async function loadContentSettings() {
+        if (!window.api || !window.api.getSettings) return;
+        try {
+          const res = await window.api.getSettings();
+          siteSettings = (res && res.data) || null;
+          if (siteSettings && siteSettings.content) {
+            const cp = siteSettings.content;
+            if (cp.heroTag && document.getElementById('content-hero-tag')) document.getElementById('content-hero-tag').innerText = cp.heroTag;
+            if (cp.heroTitle && document.getElementById('content-hero-title')) document.getElementById('content-hero-title').innerText = cp.heroTitle;
+            if (cp.heroDesc && document.getElementById('content-hero-desc')) document.getElementById('content-hero-desc').innerText = cp.heroDesc;
+          }
+          if (siteSettings && siteSettings.global) {
+            const gl = siteSettings.global;
+            document.querySelectorAll('.global-company-name').forEach(el => el.innerText = gl.companyName || 'M-TP ENTERTAINMENT');
+            document.querySelectorAll('.global-copyright').forEach(el => el.innerText = gl.copyright || '© 2026 M-TP Entertainment. All rights reserved.');
+          }
+        } catch (e) {}
+      }
+
+      // Card Generator (theo đúng chuẩn layout của Ảnh 2)
+      function renderMediaCard(c, isCarousel = true) {
+        const isAudio = (c.type === 'Audio');
+        const isBehind = (c.type === 'BehindTheScenes');
+
+        let badgeHtml = '';
+        if (isAudio) {
+          badgeHtml = `<span class="px-2 py-0.5 rounded bg-black/85 backdrop-blur-md text-[10px] font-bold text-amber-400 border border-amber-400/30 flex items-center gap-1"><i class="fa-solid fa-headphones text-[9px]"></i> Audio</span>`;
+        } else {
+          badgeHtml = `<span class="px-2 py-0.5 rounded bg-black/85 backdrop-blur-md text-[10px] font-bold text-white border border-zinc-700/80 flex items-center gap-1"><i class="fa-brands fa-youtube text-red-500 text-xs"></i> YouTube</span>`;
+        }
+
+        const widthClass = isCarousel ? 'w-[280px] sm:w-[320px] md:w-[340px] flex-none carousel-item-card' : 'w-full';
+
+        return `
+          <div class="${widthClass} flex flex-col group cursor-pointer" onclick="${isAudio ? `window.handlePlayAudioDirect('${c._id}')` : `window.handleWatchMedia('${(c.youtube_url || c.mediaUrl || '').replace(/'/g, "\\'")}', '${(c.title || '').replace(/'/g, "\\'")}', '${c._id}')`}">
+            <!-- 16:9 Thumbnail -->
+            <div class="relative aspect-video rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800/90 group-hover:border-amber-400/70 transition-all duration-300 shadow-md">
+              <img
+                src="${c.cover_image || c.thumbnail}"
+                alt="${c.title}"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80'"
+              />
+              
+              <!-- Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+
+              <!-- Channel Stamp Logo (Bottom Left) -->
+              <div class="absolute bottom-2.5 left-2.5 flex items-center gap-1.5">
+                <span class="px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] font-black tracking-widest text-white border border-white/20">M-TP</span>
+                <span class="text-[9px] font-bold text-zinc-300 uppercase hidden sm:inline">OFFICIAL</span>
+              </div>
+
+              <!-- YouTube / Audio Badge (Bottom Right - chuẩn như Ảnh 2) -->
+              <div class="absolute bottom-2.5 right-2.5">
+                ${badgeHtml}
+              </div>
+
+              <!-- Duration Badge (Top Right) -->
+              <div class="absolute top-2.5 right-2.5">
+                <span class="px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono text-zinc-300 border border-zinc-800">
+                  ${c.duration || '04:15'}
+                </span>
+              </div>
+
+              <!-- Center Hover Play Button -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                <div class="w-12 h-12 rounded-full ${isAudio ? 'bg-amber-400 text-black' : (isBehind ? 'bg-purple-600 text-white' : 'bg-red-600 text-white')} flex items-center justify-center text-sm shadow-2xl transform group-hover:scale-110 transition-transform">
+                  <i class="fa-solid ${isAudio ? 'fa-headphones' : 'fa-play ml-0.5'}"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Title & Meta Info -->
+            <div class="pt-3 flex flex-col flex-1 justify-between">
+              <div>
+                <h4 class="font-bold text-sm sm:text-base text-white line-clamp-2 leading-snug group-hover:text-amber-400 transition-colors">
+                  ${c.title}
+                </h4>
+              </div>
+              <div class="flex items-center justify-between text-xs text-zinc-400 mt-2">
+                <span class="font-semibold text-zinc-300">Sơn Tùng M-TP</span>
+                <span class="flex items-center gap-1 text-zinc-400 font-medium">
+                  <i class="fa-solid fa-fire text-amber-400/90 text-[10px]"></i>
+                  ${c.views || 'Triệu view'}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Row Carousel Generator (theo đúng cấu trúc đầu mục trong Ảnh 2)
+      function renderCarouselRow(config) {
+        const { id, type, title, badgeColor, icon, items } = config;
+        if (!items || items.length === 0) return '';
+
+        return `
+          <section class="space-y-4 relative">
+            <!-- Row Header (Đầu mục có Tiêu đề, số lượng, View all và Mũi tên) -->
+            <div class="flex items-center justify-between pb-1">
+              <div class="flex items-center gap-3">
+                <h3 class="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-wider flex items-center gap-2">
+                  <i class="${icon} text-amber-400 text-sm"></i>
+                  <span>${title}</span>
+                </h3>
+                <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold ${badgeColor}">
+                  ${items.length} tác phẩm
+                </span>
+              </div>
+
+              <!-- Controls: View all + Mũi tên điều hướng -->
+              <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="window.filterByCategory('${type}')" class="text-xs sm:text-sm font-bold text-zinc-400 hover:text-white transition cursor-pointer flex items-center gap-1.5 py-1 px-2.5 rounded-lg hover:bg-zinc-900 group">
+                  <span>View all</span>
+                  <i class="fa-solid fa-chevron-right text-[10px] group-hover:translate-x-0.5 transition-transform text-zinc-400 group-hover:text-amber-400"></i>
+                </button>
+                
+                <div class="flex items-center gap-1.5 border-l border-zinc-800 pl-2 sm:pl-3">
+                  <button onclick="window.scrollCarousel('${id}', -1)" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 flex items-center justify-center transition cursor-pointer hover:border-zinc-600" title="Lùi lại">
+                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                  </button>
+                  <button onclick="window.scrollCarousel('${id}', 1)" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 flex items-center justify-center transition cursor-pointer hover:border-zinc-600" title="Xem tiếp video còn lại">
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Horizontal Carousel Track -->
+            <div class="relative group/carousel">
+              <div id="${id}" class="carousel-track flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-3 select-none" style="scroll-snap-type: x mandatory;">
+                ${items.map(c => renderMediaCard(c, true)).join('')}
+              </div>
+
+              <!-- Floating Quick Next Arrow (Bên mép phải như Ảnh 2) -->
+              <button onclick="window.scrollCarousel('${id}', 1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/85 hover:bg-amber-400 hover:text-black text-white border border-zinc-700/80 flex items-center justify-center shadow-2xl transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 backdrop-blur-md cursor-pointer transform translate-x-3 hover:scale-110" title="Xem thêm video còn lại">
+                <i class="fa-solid fa-chevron-right text-sm"></i>
+              </button>
+
+              <!-- Floating Quick Prev Arrow (Bên mép trái) -->
+              <button onclick="window.scrollCarousel('${id}', -1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/85 hover:bg-amber-400 hover:text-black text-white border border-zinc-700/80 flex items-center justify-center shadow-2xl transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 backdrop-blur-md cursor-pointer transform -translate-x-3 hover:scale-110" title="Quay lại video trước">
+                <i class="fa-solid fa-chevron-left text-sm"></i>
+              </button>
+            </div>
+          </section>
+        `;
+      }
+
+      // Filtered Grid View khi ấn "View all" hoặc chọn tab đơn
+      function renderFilteredGrid(title, type, items, container) {
+        container.innerHTML = `
+          <div class="space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
+              <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+                  <i class="fa-solid fa-layer-group"></i> TOÀN BỘ TÁC PHẨM TRONG DANH MỤC
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white uppercase mt-1 tracking-tight">${title}</h2>
+                <p class="text-xs text-zinc-400 mt-1">Đang hiển thị toàn bộ ${items.length} tác phẩm.</p>
+              </div>
+              <button onclick="window.filterByCategory('')" class="px-5 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-xs font-bold text-zinc-300 hover:text-white border border-zinc-700 transition flex items-center gap-2 cursor-pointer self-start sm:self-auto">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Quay lại xem 3 đầu mục (Carousel)</span>
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              ${items.map(c => renderMediaCard(c, false)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Hàm chính hiển thị nội dung
+      function renderMediaDisplay(items, activeFilter = '') {
+        const container = document.getElementById('content-display-container');
+        if (!container) return;
+
+        if (!items || items.length === 0) {
+          container.innerHTML = '<div class="text-center py-20 text-zinc-500">Chưa có tác phẩm nào trong thể loại này.</div>';
+          return;
+        }
+
+        const mvItems = items.filter(c => c.type === 'MV');
+        const audioItems = items.filter(c => c.type === 'Audio');
+        const btsItems = items.filter(c => c.type === 'BehindTheScenes');
+
+        if (activeFilter === 'MV') {
+          renderFilteredGrid('SON TUNG M-TP OFFICIAL MUSIC VIDEO', 'MV', mvItems, container);
+          return;
+        }
+        if (activeFilter === 'Audio') {
+          renderFilteredGrid('BẢN AUDIO CHÍNH THỨC (OFFICIAL AUDIO TRACKS)', 'Audio', audioItems, container);
+          return;
+        }
+        if (activeFilter === 'BehindTheScenes') {
+          renderFilteredGrid('HẬU TRƯỜNG & PHIM TÀI LIỆU (BEHIND THE SCENES)', 'BehindTheScenes', btsItems, container);
+          return;
+        }
+
+        // Mặc định: Hiển thị đầy đủ 3 đầu mục Carousel theo Ảnh 2
+        container.innerHTML = `
+          <!-- ĐẦU MỤC 1: MV -->
+          ${renderCarouselRow({
+            id: 'row-carousel-mv',
+            type: 'MV',
+            title: (siteSettings && siteSettings.content && siteSettings.content.row1Title) ? siteSettings.content.row1Title : 'SON TUNG M-TP OFFICIAL MUSIC VIDEO',
+            badgeColor: 'text-red-400 bg-red-600/20 border-red-500/30',
+            icon: 'fa-solid fa-clapperboard',
+            items: mvItems
+          })}
+
+          <!-- ĐẦU MỤC 2: AUDIO -->
+          ${renderCarouselRow({
+            id: 'row-carousel-audio',
+            type: 'Audio',
+            title: (siteSettings && siteSettings.content && siteSettings.content.row2Title) ? siteSettings.content.row2Title : 'BẢN AUDIO CHÍNH THỨC (OFFICIAL AUDIO TRACKS)',
+            badgeColor: 'text-amber-400 bg-amber-400/20 border-amber-400/30',
+            icon: 'fa-solid fa-headphones',
+            items: audioItems
+          })}
+
+          <!-- ĐẦU MỤC 3: HẬU TRƯỜNG -->
+          ${renderCarouselRow({
+            id: 'row-carousel-bts',
+            type: 'BehindTheScenes',
+            title: (siteSettings && siteSettings.content && siteSettings.content.row3Title) ? siteSettings.content.row3Title : 'HẬU TRƯỜNG & PHIM TÀI LIỆU (BEHIND THE SCENES)',
+            badgeColor: 'text-purple-400 bg-purple-600/20 border-purple-500/30',
+            icon: 'fa-solid fa-film',
+            items: btsItems
+          })}
+        `;
+
+        // Kích hoạt kéo chuột lướt ngang (Drag-to-scroll)
+        document.querySelectorAll('.carousel-track').forEach(track => {
+          enableDragToScroll(track);
+        });
+      }
+
+      // Kéo chuột lướt ngang (Mouse Drag Scroll)
+      function enableDragToScroll(slider) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+          isDown = true;
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+          isDown = false;
+        });
+        slider.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+        slider.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 1.5;
+          slider.scrollLeft = scrollLeft - walk;
+        });
+      }
+
+      // Cuộn ngang Carousel bằng nút mũi tên
+      window.scrollCarousel = (id, direction) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const scrollDistance = 340 * 2;
+        el.scrollBy({ left: direction * scrollDistance, behavior: 'smooth' });
+      };
+
+      // Chuyển danh mục khi bấm tab hoặc View all
+      window.filterByCategory = (type) => {
+        currentFilterType = type;
+        document.querySelectorAll('.content-tab-btn').forEach(btn => {
+          const bType = btn.getAttribute('data-type');
+          if (bType === type) {
+            btn.classList.add('bg-white', 'text-black');
+            btn.classList.remove('text-zinc-400');
+          } else {
+            btn.classList.remove('bg-white', 'text-black');
+            btn.classList.add('text-zinc-400');
+          }
+        });
+        renderMediaDisplay(loadedContentItems, type);
+      };
+
+      // Load Content từ API
+      async function loadMediaContent(type = '') {
+        const container = document.getElementById('content-display-container');
+        if (!container || !window.api) return;
+        
+        await loadContentSettings();
+        const res = await window.api.getContent();
+        const items = res.data || [];
+        loadedContentItems = items;
+        currentFilterType = type;
+
+        renderMediaDisplay(loadedContentItems, type);
+      }
+
+      // Handler 1: Xem MV & Hậu Trường -> Chiếu Thẳng Trực Tiếp Trên Nền Tảng Web (Rạp Chiếu 4K Cinema Modal)
+      window.handleWatchMedia = (mediaUrl, title, contentId) => {
+        if (window.api && !window.api.requireAuth('Vui lòng đăng nhập tài khoản Sky để thưởng thức trọn vẹn Music Video và Hậu trường chính thức!')) {
+          return;
+        }
+
+        const item = loadedContentItems.find(c => c._id === contentId) || {
+          title: title || 'Tác Phẩm Âm Nhạc',
+          views: '100M+ views',
+          description: 'Nội dung chính thức từ Sơn Tùng M-TP'
+        };
+
+        const cinemaModal = document.getElementById('modal-cinema-theater');
+        const cinemaIframe = document.getElementById('cinema-modal-iframe');
+        const cinemaTitle = document.getElementById('cinema-modal-title');
+        const cinemaViews = document.getElementById('cinema-modal-views');
+        const cinemaDesc = document.getElementById('cinema-modal-desc');
+
+        if (cinemaTitle) cinemaTitle.innerText = item.title || title;
+        if (cinemaViews) cinemaViews.innerHTML = `<i class="fa-solid fa-fire text-amber-400"></i> ${item.views || 'Triệu view'}`;
+        if (cinemaDesc) cinemaDesc.innerText = item.description || 'Chiếu trực tiếp chất lượng cao trên nền tảng web Sơn Tùng M-TP World.';
+
+        const ytid = extractYouTubeId(mediaUrl || item.youtube_url || item.mediaUrl, item.title || title);
+        if (cinemaIframe) {
+          cinemaIframe.src = `https://www.youtube.com/embed/${ytid}?autoplay=1&enablejsapi=1&rel=0&playsinline=1`;
+        }
+
+        cinemaModal?.classList.remove('hidden');
+      };
+
+      const closeCinemaTheater = () => {
+        const cinemaModal = document.getElementById('modal-cinema-theater');
+        const cinemaIframe = document.getElementById('cinema-modal-iframe');
+        if (cinemaIframe) cinemaIframe.src = '';
+        cinemaModal?.classList.add('hidden');
+      };
+
+      document.getElementById('close-cinema-modal')?.addEventListener('click', closeCinemaTheater);
+      document.getElementById('modal-cinema-theater')?.addEventListener('click', (e) => {
+        if (e.target.id === 'modal-cinema-theater') closeCinemaTheater();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeCinemaTheater();
+      });
+
+      // Handler 2: Nghe Audio Trực Tiếp Trên Web
+      const audioBar = document.getElementById('content-audio-player-bar');
+      const audioEl = document.getElementById('content-native-audio');
+      const audioCover = document.getElementById('audio-bar-cover');
+      const audioYoutube = document.getElementById('audio-bar-youtube');
+      const audioTitle = document.getElementById('audio-bar-title');
+      const audioViews = document.getElementById('audio-bar-views');
+      const audioToggle = document.getElementById('audio-bar-toggle');
+      const audioIcon = document.getElementById('audio-bar-icon');
+      const audioBackward = document.getElementById('audio-bar-backward');
+      const audioForward = document.getElementById('audio-bar-forward');
+      const audioCurrent = document.getElementById('audio-current-time');
+      const audioDuration = document.getElementById('audio-duration-time');
+      const audioProgress = document.getElementById('audio-progress-bar');
+      const audioProgCont = document.getElementById('audio-progress-container');
+      const audioClose = document.getElementById('audio-bar-close');
+      const audioMute = document.getElementById('audio-bar-mute');
+      const audioVolIcon = document.getElementById('audio-bar-vol-icon');
+
+      let audioTimer = null;
+      let isPlayingAudio = false;
+      let isMuted = false;
+      let currentSec = 0;
+      let totalSec = 276; // 4:36
+
+      function extractYouTubeId(url, title = '') {
+        if (url) {
+          const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/i);
+          if (match && match[1]) return match[1];
+        }
+        const t = (title || '').toLowerCase();
+        if (t.includes('nơi này có anh') || t.includes('noi nay co anh')) return 'FN7ALfpGxiI';
+        if (t.includes('muộn rồi') || t.includes('muon roi')) return 'xypzmu5mMPY';
+        if (t.includes('đừng làm trái tim') || t.includes('dung lam trai tim')) return 'abPmFUZQ28M';
+        if (t.includes('chúng ta của tương lai')) return 'psZ1g9fMfeo';
+        if (t.includes('hãy trao cho anh') || t.includes('hay trao cho anh')) return 'knW7-x7Y7RE';
+        if (t.includes('chạy ngay đi') || t.includes('chay ngay di')) return '32sYGCOYJUM';
+        if (t.includes('lạc trôi') || t.includes('lac troi')) return 'Llw9Q6akRo4';
+        return 'FN7ALfpGxiI';
+      }
+
+      function sendYTIframeCommand(cmd, args = []) {
+        if (audioYoutube && audioYoutube.contentWindow) {
+          audioYoutube.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: cmd,
+            args: args
+          }), '*');
+        }
+      }
+
+      function updateProgressUI() {
+        const m = Math.floor(currentSec / 60);
+        const s = currentSec % 60;
+        if (audioCurrent) audioCurrent.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+        if (audioProgress) audioProgress.style.width = `${Math.min(100, (currentSec / totalSec) * 100)}%`;
+      }
+
+      window.handlePlayAudioDirect = (contentId) => {
+        if (window.api && !window.api.requireAuth('Vui lòng đăng nhập tài khoản Sky để nghe trực tiếp bản thu âm Audio chất lượng cao!')) {
+          return;
+        }
+
+        const item = loadedContentItems.find(c => c._id === contentId) || {
+          title: 'Nơi Này Có Anh - Audio',
+          youtube_url: 'https://www.youtube.com/watch?v=FN7ALfpGxiI',
+          cover_image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80',
+          views: '479M views',
+          duration: '04:36'
+        };
+
+        if (audioTitle) audioTitle.innerText = item.title;
+        if (audioViews) audioViews.innerText = item.views || 'Triệu lượt nghe';
+        if (audioDuration) audioDuration.innerText = item.duration || '04:36';
+        if (audioCover) audioCover.src = item.cover_image || item.thumbnail || 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80';
+
+        // Phân tích thời lượng
+        if (item.duration && item.duration.includes(':')) {
+          const parts = item.duration.split(':').map(Number);
+          if (parts.length === 2) totalSec = parts[0] * 60 + parts[1];
+        } else {
+          totalSec = 276;
+        }
+
+        currentSec = 0;
+        updateProgressUI();
+
+        // Kiểm tra nguồn phát: Native Audio file hay YouTube Track
+        if (item.audio_url || item.mp3_url) {
+          if (audioYoutube) {
+            audioYoutube.src = '';
+            audioYoutube.classList.add('hidden');
+          }
+          if (audioCover) audioCover.classList.remove('hidden');
+          if (audioEl) {
+            audioEl.src = item.audio_url || item.mp3_url;
+            audioEl.play().catch(() => {});
+          }
+        } else {
+          // Phát trực tiếp bản thu âm chính thức từ YouTube Player
+          const ytid = extractYouTubeId(item.youtube_url || item.mediaUrl, item.title);
+          if (audioCover) audioCover.classList.add('hidden');
+          if (audioYoutube) {
+            audioYoutube.src = `https://www.youtube.com/embed/${ytid}?autoplay=1&enablejsapi=1&playsinline=1`;
+            audioYoutube.classList.remove('hidden');
+          }
+        }
+
+        // Hiện thanh phát nhạc và bật timer
+        audioBar?.classList.remove('translate-y-full');
+        isPlayingAudio = true;
+        if (audioIcon) audioIcon.className = 'fa-solid fa-pause';
+
+        if (audioTimer) clearInterval(audioTimer);
+        audioTimer = setInterval(() => {
+          if (!isPlayingAudio) return;
+          currentSec++;
+          if (currentSec > totalSec) currentSec = 0;
+          updateProgressUI();
+        }, 1000);
+      };
+
+      // Nút Play / Pause
+      audioToggle?.addEventListener('click', () => {
+        isPlayingAudio = !isPlayingAudio;
+        if (isPlayingAudio) {
+          if (audioIcon) audioIcon.className = 'fa-solid fa-pause';
+          sendYTIframeCommand('playVideo');
+          if (audioEl && audioEl.src) audioEl.play().catch(() => {});
+        } else {
+          if (audioIcon) audioIcon.className = 'fa-solid fa-play ml-0.5';
+          sendYTIframeCommand('pauseVideo');
+          if (audioEl && audioEl.src) audioEl.pause();
+        }
+      });
+
+      // Nút Lùi 10s
+      audioBackward?.addEventListener('click', () => {
+        currentSec = Math.max(0, currentSec - 10);
+        updateProgressUI();
+        sendYTIframeCommand('seekTo', [currentSec, true]);
+        if (audioEl && audioEl.src) audioEl.currentTime = currentSec;
+      });
+
+      // Nút Tiến 10s
+      audioForward?.addEventListener('click', () => {
+        currentSec = Math.min(totalSec, currentSec + 10);
+        updateProgressUI();
+        sendYTIframeCommand('seekTo', [currentSec, true]);
+        if (audioEl && audioEl.src) audioEl.currentTime = currentSec;
+      });
+
+      // Tua trực tiếp khi click lên thanh tiến trình
+      audioProgCont?.addEventListener('click', (e) => {
+        const rect = audioProgCont.getBoundingClientRect();
+        const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        currentSec = Math.floor(clickRatio * totalSec);
+        updateProgressUI();
+        sendYTIframeCommand('seekTo', [currentSec, true]);
+        if (audioEl && audioEl.src) audioEl.currentTime = currentSec;
+      });
+
+      // Nút Mute / Unmute
+      audioMute?.addEventListener('click', () => {
+        isMuted = !isMuted;
+        if (isMuted) {
+          if (audioVolIcon) audioVolIcon.className = 'fa-solid fa-volume-xmark text-rose-400';
+          sendYTIframeCommand('mute');
+          if (audioEl) audioEl.muted = true;
+        } else {
+          if (audioVolIcon) audioVolIcon.className = 'fa-solid fa-volume-high';
+          sendYTIframeCommand('unMute');
+          if (audioEl) audioEl.muted = false;
+        }
+      });
+
+      // Nút Đóng thanh phát nhạc
+      audioClose?.addEventListener('click', () => {
+        isPlayingAudio = false;
+        if (audioTimer) clearInterval(audioTimer);
+        sendYTIframeCommand('stopVideo');
+        if (audioYoutube) {
+          audioYoutube.src = '';
+          audioYoutube.classList.add('hidden');
+        }
+        if (audioCover) audioCover.classList.remove('hidden');
+        if (audioEl) {
+          audioEl.pause();
+          audioEl.src = '';
+        }
+        audioBar?.classList.add('translate-y-full');
+      });
+
+      loadMediaContent();
+    });
+  </script>
+</body>
+</html>

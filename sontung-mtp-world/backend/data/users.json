@@ -1,0 +1,27 @@
+[
+    {
+        "_id":  "user_1790779539341",
+        "username":  "bean",
+        "email":  "d.haoblue@gmail.com",
+        "role":  "fan",
+        "avatar":  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format\u0026fit=crop\u0026w=300\u0026q=80",
+        "createdAt":  "2026-09-30T21:45:39.3895826+07:00"
+    },
+    {
+        "_id":  "user_admin",
+        "username":  "mtp_admin",
+        "email":  "admin@mtp.vn",
+        "role":  "admin",
+        "avatar":  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format\u0026fit=crop\u0026w=300\u0026q=80",
+        "createdAt":  "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "_id":  "user_sky_01",
+        "username":  "sontung_sky",
+        "email":  "sky@mtp.vn",
+        "role":  "vip_sky",
+        "vipId":  "SKY-777888",
+        "avatar":  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format\u0026fit=crop\u0026w=300\u0026q=80",
+        "createdAt":  "2024-02-14T00:00:00.000Z"
+    }
+]

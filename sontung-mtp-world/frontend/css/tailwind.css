@@ -1,0 +1,13 @@
+/* Tailwind CSS Directives & Custom Utility Overrides */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(229, 185, 95, 0.5);
+  }
+  .bg-radial-gradient {
+    background: radial-gradient(circle at 50% 20%, rgba(229, 185, 95, 0.12) 0%, transparent 70%);
+  }
+}
